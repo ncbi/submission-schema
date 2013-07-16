@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Submission processing report XML. -->
+    <xs:element name="SubmissionStatus">
+        <xs:annotation>
+            <xs:documentation>Status of submission processing. Used in bulk data submission to report processing status back to submitter.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0">
+                <xs:element name="Message" type="typeMessage" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Message to submitter at submission level.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Action" type="typeActionStatus" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Response for each submission action from the target archive.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="submission_id" use="optional">
+                <xs:annotation>
+                    <xs:documentation>Id of the submission, assigned by Submission Portal, if submission compliant with the protocol.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="status" type="typeStatus" use="required">
+                <xs:annotation>
+                    <xs:documentation>
+                    Status at submission level. It serves two purposes: a) to indicate error on the very high level (prior to action processing) or 
+                                                                        b) intergral status of all actions</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- UpdateActionStatus API XML data schema -->
+    <xs:complexType name="typeActionStatus">
+        <xs:sequence>
+            <xs:element name="Link" type="typeLink" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation><xs:documentation>Links created from Objects, resulted from processing of this action to another objects.</xs:documentation></xs:annotation>
+            </xs:element>
+            <xs:element name="Response" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation><xs:documentation>Structured response from target db. Each node is a group for similar files/objects.</xs:documentation></xs:annotation>
+                <xs:complexType>
+                    <xs:sequence minOccurs="1" maxOccurs="1">
+                        <xs:element name="Message" type="typeMessage" minOccurs="0">
+                            <xs:annotation><xs:documentation>Message to submitter for target archive - could be info, warning, soft error or hard error.</xs:documentation></xs:annotation>
+                        </xs:element>
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="File" type="typeFile">
+                                <xs:annotation><xs:documentation>Commonly annotated file group.</xs:documentation></xs:annotation>
+                            </xs:element>
+                            <xs:element name="Object" type="typeObject">
+                                <xs:annotation><xs:documentation>Object(s), created, updated or deleted as a result of Action processing.</xs:documentation></xs:annotation>
+                            </xs:element>
+                        </xs:choice>                                        
+                    </xs:sequence>
+                    <xs:attribute name="status" type="typeStatus" use="required">
+                        <xs:annotation><xs:documentation>Integral status at the group level</xs:documentation></xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="error_source" type="typeErrorSource" use="optional">
+                        <xs:annotation><xs:documentation>Error source on the group level.</xs:documentation></xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="action_id" type="xs:string" use="required">
+            <xs:annotation><xs:documentation>ID of the action in Submission Track.</xs:documentation></xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="target_db" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Where this change request needs to go (or went to) for processing</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="status" type="typeStatus" use="required">
+            <xs:annotation><xs:documentation>Processing status of the action.</xs:documentation></xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    
+    <!-- Object, created, updated or deleted as a result of the action processing -->
+    <xs:complexType name="typeObject">
+        <xs:annotation><xs:documentation>Object(s), created, updated or deleted as a result of Action processing.</xs:documentation></xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:annotation><xs:documentation>Object metadata goes here.</xs:documentation></xs:annotation>
+                <xs:attribute name="target_db" type="xs:string" use="required">
+                    <xs:annotation><xs:documentation>Database where this object lives.</xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="object_id" type="xs:string" use="required">
+                    <xs:annotation><xs:documentation>ID of the object in this database</xs:documentation></xs:annotation>
+                </xs:attribute> 
+                <xs:attribute name="accession" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>Accession of the object.</xs:documentation></xs:annotation>
+                </xs:attribute>      
+                <xs:attribute name="url" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>URL link to the object.</xs:documentation></xs:annotation>
+                </xs:attribute>  
+                <xs:attribute name="local_id" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Local id, assigned by submitter. It makes sense from the submitter standpoint. 
+                        </xs:documentation>        
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="name" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>Name of the object.</xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="submitter_id" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>typeUserId: Identificator of submitter. </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="user_id" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>typeUserId: ID in the submitter namespace. </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="status" use="optional">
+                    <xs:annotation><xs:documentation>New obejct created, existing object updated, deleted</xs:documentation></xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="new">
+                            </xs:enumeration>
+                            <xs:enumeration value="updated">
+                            </xs:enumeration>
+                            <xs:enumeration value="deleted">
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="last_update" type="xs:dateTime" use="optional">
+                    <xs:annotation><xs:documentation>When the actual operation took place.</xs:documentation></xs:annotation>
+                </xs:attribute> 
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+        
+    <!-- Links between object, created as a result of processing of this action -->
+    <xs:complexType name="typeLink">
+        <xs:annotation><xs:documentation>Links created from Objects, resulted from processing of this action to another objects.</xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element name="From">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:annotation><xs:documentation>Object name goes here</xs:documentation></xs:annotation>
+                            <xs:attribute name="object_id" type="xs:string" use="required">
+                                <xs:annotation><xs:documentation>ID of the link source</xs:documentation></xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="target_db" type="xs:string" use="required">
+                                <xs:annotation><xs:documentation>Database (archive) of the link source</xs:documentation></xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="To">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:annotation><xs:documentation>Object name goes here</xs:documentation></xs:annotation>
+                            <xs:attribute name="object_id" type="xs:string" use="required">
+                                <xs:annotation><xs:documentation>ID of the link target</xs:documentation></xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="target_db" type="xs:string" use="required">
+                                <xs:annotation><xs:documentation>Database (archive) of the link target</xs:documentation></xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Attributes" type="xs:anyType" minOccurs="0" maxOccurs="1">
+                <xs:annotation><xs:documentation>Attribution of the link (optional).</xs:documentation></xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="status" use="required">
+            <xs:annotation><xs:documentation>Links status, reported by action processor.</xs:documentation></xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="new">
+                        <xs:annotation><xs:documentation>New link has been created</xs:documentation></xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="updated">
+                        <xs:annotation><xs:documentation>Link attribution updated</xs:documentation></xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="deleted">
+                        <xs:annotation><xs:documentation>Previously existed link deleted (no longer present).</xs:documentation></xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    
+    
+    <!-- Response for file processing from the target db. -->
+    <xs:complexType name="typeFile">
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:annotation><xs:documentation>File metadata goes here.</xs:documentation></xs:annotation>
+                <xs:attribute name="file_path" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        Path to the file relative from the location of submission XML. Note - at least one of (i) file_path, (ii) file_id or (iii) md5 needs to be present to correctly address the file.
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="file_id" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        FileTrack file id - unique and more preferred way to address the file. Works for files already in FileTrack. 
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="md5" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        Purpose of md5 is two-fold: to verify file content or to address the file.
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="crc32" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        Using of crc32 is infer compare to md5 and expected to be used in internal processing only.
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="content_type" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        Standart content type - e.g. text/xml, etc.
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!-- Message to submitter form the target archive. -->
+    <xs:complexType name="typeMessage">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="severity" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="info"><xs:annotation><xs:documentation>Informational message</xs:documentation></xs:annotation></xs:enumeration>
+                            <xs:enumeration value="warning"><xs:annotation><xs:documentation>Warning - e.g. some data inconsistency, which may be fine or may be not. Submitter is expected to review it.</xs:documentation></xs:annotation></xs:enumeration>
+                            <xs:enumeration value="error-continue"><xs:annotation><xs:documentation>Error, but processing can continue.</xs:documentation></xs:annotation></xs:enumeration>
+                            <xs:enumeration value="error-stop"><xs:annotation><xs:documentation>Hard error, processing stopped.</xs:documentation></xs:annotation></xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="error_source" type="typeErrorSource" use="optional">
+                    <xs:annotation><xs:documentation>Source of the error - data, program or system.</xs:documentation></xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    
+    <!-- Submission/Action status -->
+    <xs:simpleType name="typeStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="initial"><xs:annotation><xs:documentation>DEPRICATED: in favor of status created</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="created"><xs:annotation><xs:documentation>Submission created and being populated</xs:documentation></xs:annotation></xs:enumeration>	
+            <xs:enumeration value="failed"><xs:annotation><xs:documentation>Failed immediately after submission</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="queued"><xs:annotation><xs:documentation>Queued for processing</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="processing"><xs:annotation><xs:documentation>Processing started</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="processed-ok"><xs:annotation><xs:documentation>Processing completed successfully</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="processed-error"><xs:annotation><xs:documentation>Processing completed with error(s)</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="waiting"><xs:annotation><xs:documentation>Waiting for other files to continue processing</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="submitted"><xs:annotation><xs:documentation>Submitted to NCBI</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="deleted"><xs:annotation><xs:documentation>Submission deleted</xs:documentation></xs:annotation></xs:enumeration>		
+            <xs:enumeration value="retried"><xs:annotation><xs:documentation>Retried processing of failed action(s)</xs:documentation></xs:annotation></xs:enumeration>		
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="typeErrorSource">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="data"><xs:annotation><xs:documentation>Bad data - failed semantics check. Eg duplicate of the existing object submitted. Needs to be fixed by user.</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="program"><xs:annotation><xs:documentation>Bug in the software - eg bad xslt transform. Needs to be fixed by programmer.</xs:documentation></xs:annotation></xs:enumeration>
+            <xs:enumeration value="system"><xs:annotation><xs:documentation>System malfunction - eg part of infrastructure (PanFS) is down. Processing needs to be re-tried after all is back again.</xs:documentation></xs:annotation></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

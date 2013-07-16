@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common">
+  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
+
+  <!-- Main BioSample object -->
+  <xs:element name="Sample" type="typeBioSample"> </xs:element>
+
+  <xs:complexType name="typeBioSample">
+    <xs:sequence>
+      <xs:element name="SampleId" minOccurs="1" maxOccurs="1" nillable="false"
+        type="com:typeIdentifier">
+        <xs:annotation>
+          <xs:documentation> List of all sample Ids: submitter assigned, archive assigned, ....
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Descriptor" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Description of the sample</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="com:typeDescriptor">
+              <xs:sequence>
+                <xs:element name="Name" minOccurs="0" maxOccurs="1" type="xs:string"/>
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="Organism" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:documentation>Information about organism - including taxonomy if the organism has
+              taxonomy id.</xs:documentation>
+          </xs:annotation>
+          <xs:complexContent>
+            <xs:extension base="com:typeOrganism">
+              <xs:annotation>
+                <xs:documentation> In case of multiple organisms, "role" describes each organism
+                  role in the sample: host, parasite, etc. </xs:documentation>
+              </xs:annotation>
+              <xs:attribute name="role" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="BioProjects" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation> References to related BioProjects. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="BioProject" type="com:typeRefId" minOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="Models" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specification of model or model set for the sample.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Model" minOccurs="1" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:annotation>
+                      <xs:documentation>Model name</xs:documentation>
+                    </xs:annotation>
+                    <xs:attribute name="version" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>Version of the model, e.g. 1.0, 1.2, 2.2, etc. By default
+                          the latest public version.</xs:documentation>
+                      </xs:annotation>
+                    </xs:attribute>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Attributes" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Attributes (main data) of the biosample. Note that attributes comes
+            from dictionaries. One sample can has attributes from several dictionaries. The set of
+            mandatory attributes are controlled by the sample model (see Models of the sample)
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Attribute" type="typeAttribute" minOccurs="1" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Biosample is represented as a set of attributes</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Types for BioSample XML -->
+  <!-- BioSample attribute-->
+  <xs:complexType name="typeAttribute">
+    <xs:simpleContent>
+      <xs:extension base="xs:anySimpleType">
+        <xs:annotation>
+          <xs:documentation>Value of the attribute. Actually, type is restricted by the attribute
+            definition. See typeAttributeDefinition.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="dictionary_name" type="xs:string" use="optional">
+          <xs:annotation>
+            <xs:documentation>Dictionary name where this attribute is defined.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="attribute_name" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>Name of the attribute in the dictionary. Attribute name is unique
+              within the dictionary scope.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- BioSample enumerated attribute values-->
+  <xs:complexType name="typeValueConstraints">
+    <xs:sequence>
+      <xs:element name="Min" type="xs:anySimpleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Minimum value of the attribute if applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Max" type="xs:anySimpleType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Maximum value of the attribute if applicable.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Value" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Value for an attribute with enumeration semantics.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:anySimpleType">
+              <xs:annotation>
+                <xs:documentation>Attribute enumeration can be any simple type.</xs:documentation>
+              </xs:annotation>
+              <xs:attribute name="code" type="xs:anySimpleType" use="optional">
+                <xs:annotation>
+                  <xs:documentation>Enumeration code. Can be any primitive built-in type: string,
+                    int, etc.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
