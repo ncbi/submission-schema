@@ -28,13 +28,14 @@
     <!--  Local identifier in submission context. -->
     <xs:complexType name="typeLocalId">
         <xs:annotation>
-            <xs:documentation>Local identifier in submission context.</xs:documentation>
+            <xs:documentation> Local identifier in submission context. </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="submission_id" use="optional">
                     <xs:annotation>
-                        <xs:documentation>Optional submission id. If omitted, the current submission is assumed.</xs:documentation>
+                        <xs:documentation> Optional submission id. If omitted, the current
+                            submission is assumed. </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
             </xs:extension>
@@ -44,13 +45,15 @@
     <!-- Unique identifier in submitter context (Submitter Provided Unique ID). -->
     <xs:complexType name="typeSPUID">
         <xs:annotation>
-            <xs:documentation>Unique identifier in submitter context (Submitter Provided Unique ID). </xs:documentation>
+            <xs:documentation> Unique identifier in submitter context (Submitter Provided Unique
+                ID). </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="submitter_id" use="optional">
                     <xs:annotation>
-                        <xs:documentation> Optional submitter id - eg JGI. If omitted, the current submitter is assumed. </xs:documentation>
+                        <xs:documentation> Optional submitter id - eg JGI. If omitted, the current
+                            submitter is assumed. </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
             </xs:extension>
@@ -142,8 +145,8 @@
                 be resolved once archive objects are accessioned. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="From" type="com:typeRefId"></xs:element>
-            <xs:element name="To" type="com:typeRefId"></xs:element>
+            <xs:element name="From" type="com:typeRefId"> </xs:element>
+            <xs:element name="To" type="com:typeRefId"> </xs:element>
             <xs:element name="Attributes" type="xs:anyType" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation> Optional attribution of the link.</xs:documentation>
@@ -161,7 +164,8 @@
         </xs:choice>
         <xs:attribute name="label" type="xs:string">
             <xs:annotation>
-                <xs:documentation> Text which is shown on the obect presentation page for this link.</xs:documentation>
+                <xs:documentation> Text which is shown on the obect presentation page for this link.
+                </xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="category" use="optional" type="xs:string"> </xs:attribute>
@@ -187,7 +191,8 @@
             <xs:extension base="xs:string">
                 <xs:attribute name="name" type="xs:string">
                     <xs:annotation>
-                        <xs:documentation> Named attributes, attached to the file.</xs:documentation>
+                        <xs:documentation> Named attributes, attached to the file.
+                        </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
             </xs:extension>
@@ -213,7 +218,7 @@
     <!-- Publication. Can be either structured or free form citations as well as link to the publication database. -->
     <xs:complexType name="typePublication">
         <xs:sequence>
-            <xs:element name="AuthorSet" type="com:typeAuthorSet" maxOccurs="1"></xs:element>
+            <xs:element name="AuthorSet" type="com:typeAuthorSet" maxOccurs="1"> </xs:element>
             <xs:element name="Reference" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>Free form citation.</xs:documentation>
@@ -222,7 +227,7 @@
             <xs:element name="StructuredCitation" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="Title" type="xs:string"></xs:element>
+                        <xs:element name="Title" type="xs:string"> </xs:element>
                         <xs:element name="Journal">
                             <xs:complexType>
                                 <xs:sequence>
@@ -252,7 +257,8 @@
                         <xs:enumeration value="eDOI"> </xs:enumeration>
                         <xs:enumeration value="eNotAvailable">
                             <xs:annotation>
-                                <xs:documentation>Use for Unpublished, in press or other databases.</xs:documentation>
+                                <xs:documentation> Use for Unpublished, in press or other databases.
+                                </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                     </xs:restriction>
@@ -261,7 +267,8 @@
         </xs:sequence>
         <xs:attribute name="id" type="xs:string">
             <xs:annotation>
-                <xs:documentation>Unique publication identifier in the specified database that is specific to the project.</xs:documentation>
+                <xs:documentation> Unique publication identifier in the specified database that is
+                    specific to the project. </xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="date" type="xs:dateTime">
@@ -380,19 +387,29 @@
             <xs:element name="OrganismName" type="xs:string"> </xs:element>
             <xs:element name="Label" minOccurs="0" maxOccurs="1" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation> Used in situations to distinguish a project that is not a
-                        strain, breed or cultivar. For example, this could be a common library name
-                        or a known sample name, such as Coco the gorilla. </xs:documentation>
+                    <xs:documentation> A label for sample, or name of an individual animal (e.g., Clint).</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="Strain" type="xs:string" minOccurs="0">
                 <xs:annotation>
-                    <xs:documentation>A strain, breed or cultivar. </xs:documentation>
+                    <xs:documentation>Microbial/eukaryotic strain name.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="IsolateName" minOccurs="0" type="xs:string"/>
-            <xs:element name="Breed" minOccurs="0" type="xs:string"/>
-            <xs:element name="Cultivar" minOccurs="0" type="xs:string"/>
+            <xs:element name="IsolateName" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Identification or description of the specific individual from which this sample was obtained.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Breed" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Breed name - chiefly used in domesticated animals or plants.</xs:documentation>
+                </xs:annotation>                
+            </xs:element>
+            <xs:element name="Cultivar" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Cultivar name - cultivated variety of plant.</xs:documentation>
+                </xs:annotation>                
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="taxonomy_id" type="xs:int" use="optional"> </xs:attribute>
     </xs:complexType>
