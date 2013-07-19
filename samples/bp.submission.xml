@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Submission last_update="2012-05-10" submitted="2012-05-10">
+    <Description>
+        <Organization role="participant" type="institute">
+            <Name>Genomics Institute</Name>
+            <Contact email="email@organization.org">
+                <Name>
+                    <First>Jane</First>
+                    <Last>Doe</Last>
+                </Name>
+            </Contact>
+        </Organization>
+        <Hold release_date="2017-01-01"/>
+    </Description>
+    <Action>
+        <AddData target_db="BioProject">
+            <Data content_type="XML">
+                <XmlContent>
+                    <Project>
+                        <ProjectID/>                          
+                        <Descriptor>
+                            <Title>Candida albicans A123</Title>
+                            <Description>
+                                <p> Genome Sequencing of C. albicans </p>
+                            </Description>
+                            <ExternalLink category="Related Resources" label="Genomics Institute">
+                                <URL>www.organization.org</URL>
+                            </ExternalLink>
+                            <Relevance>
+                                <Medical>yes</Medical>
+                            </Relevance>
+                        </Descriptor>
+                        <ProjectType>
+                            <ProjectTypeSubmission sample_scope="eMonoisolate">
+                                <Organism>
+                                    <OrganismName>Candida albicans A123</OrganismName>
+                                    <Strain>A123</Strain>
+                                </Organism>
+                                <BioSampleSet>
+                                    <BioSample>
+                                        <PrimaryId db="BioSample">SAMN000123</PrimaryId>
+                                    </BioSample>
+                                </BioSampleSet>
+                                <IntendedDataTypeSet>
+                                    <DataType>
+                                        genome sequencing
+                                    </DataType>
+                                </IntendedDataTypeSet>
+                            </ProjectTypeSubmission>
+                        </ProjectType>
+                    </Project>
+                </XmlContent>
+            </Data>
+            <Identifier>
+                <SPUID submitter_id="Genomics Institute">db2:ID123456</SPUID>
+            </Identifier>
+        </AddData>
+    </Action>
+</Submission>

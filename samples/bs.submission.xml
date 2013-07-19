@@ -1,0 +1,61 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Description>
+    <Organization role="participant" type="institute">
+      <Name>Genomics Institute</Name>
+      <Contact email="email@organization.org">
+        <Name>
+          <First>Jane</First>
+          <Last>Doe</Last>
+        </Name>
+      </Contact>
+    </Organization>
+    <Hold release_date="2017-01-01"/>
+  </Description>
+  <Action>
+    <AddData target_db="BioSample">
+      <Data content_type="XML">
+        <XmlContent>
+          <Sample>
+            <SampleId/>
+            <Descriptor>
+              <Title>Bacterial, clinical or host-associated sample for Salmonella enterica subsp.
+                enterica serovar Montevideo</Title>
+              <Description>
+                <p>Control Isolate for outbreak study</p>
+              </Description>
+              <ExternalLink>
+                <ExternalID db="PubMed">1234567</ExternalID>
+              </ExternalLink>
+              <Name>ABC123</Name>
+            </Descriptor>
+            <Organism>
+              <OrganismName>Candida albicans A123</OrganismName>
+              <Strain>A123</Strain>
+            </Organism>
+            <BioProjects>
+              <BioProject>
+                <PrimaryId db="BioProject">PRJNA123456</PrimaryId>
+              </BioProject>
+            </BioProjects>
+            <Models>
+              <Model>Pathogen.ba-cl</Model>
+            </Models>
+            <Attributes>
+              <Attribute attribute_name="collection_date">Apr-2004</Attribute>
+              <Attribute attribute_name="geo_loc_name">USA</Attribute>
+              <Attribute attribute_name="lat_lon">41.000000 -78.000</Attribute>
+              <Attribute attribute_name="isolation-source">Homo sapiens</Attribute>
+              <Attribute attribute_name="specific_host">Homo sapiens</Attribute>
+              <Attribute attribute_name="host-disease">missing</Attribute>
+              <Attribute attribute_name="collected-by">Hospital</Attribute>
+            </Attributes>
+          </Sample>
+        </XmlContent>    
+      </Data>
+      <Identifier>
+        <SPUID submitter_id="Genomics Institute">db1:ID654321</SPUID>
+      </Identifier>
+    </AddData>
+  </Action>
+</Submission>
