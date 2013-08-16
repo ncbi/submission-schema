@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common">
-  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
+  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/SP.common.xsd?view=co" namespace="SP.common"/>
 
   <!-- Main BioSample object -->
-  <xs:element name="Sample" type="typeBioSample"> </xs:element>
+  <xs:element name="BioSample" type="typeBioSample"> </xs:element>
 
   <xs:complexType name="typeBioSample">
     <xs:sequence>
@@ -29,7 +29,7 @@
         </xs:complexType>
       </xs:element>
 
-      <xs:element name="Organism" minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Organism" minOccurs="1" maxOccurs="1">
         <xs:complexType>
           <xs:annotation>
             <xs:documentation>Information about organism - including taxonomy if the organism has
@@ -47,43 +47,18 @@
         </xs:complexType>
       </xs:element>
 
-      <xs:element name="BioProjects" minOccurs="0">
+      <xs:element name="BioProject" type="com:typeRefId" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation>
-          <xs:documentation> References to related BioProjects. </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="BioProject" type="com:typeRefId" minOccurs="1" maxOccurs="unbounded"/>
-          </xs:sequence>
-        </xs:complexType>
+          <xs:documentation>Related BioProject</xs:documentation>
+        </xs:annotation>  
       </xs:element>
 
-      <xs:element name="Models" minOccurs="1" maxOccurs="1">
+      <xs:element name="Package" minOccurs="1" maxOccurs="1">
         <xs:annotation>
-          <xs:documentation>Specification of model or model set for the sample.</xs:documentation>
+          <xs:documentation>Name of attribute package used to validate sample. See *** for full list of available packages.</xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Model" minOccurs="1" maxOccurs="unbounded">
-              <xs:complexType>
-                <xs:simpleContent>
-                  <xs:extension base="xs:string">
-                    <xs:annotation>
-                      <xs:documentation>Model name</xs:documentation>
-                    </xs:annotation>
-                    <xs:attribute name="version" type="xs:string">
-                      <xs:annotation>
-                        <xs:documentation>Version of the model, e.g. 1.0, 1.2, 2.2, etc. By default
-                          the latest public version.</xs:documentation>
-                      </xs:annotation>
-                    </xs:attribute>
-                  </xs:extension>
-                </xs:simpleContent>
-              </xs:complexType>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
       </xs:element>
+
       <xs:element name="Attributes" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation> Attributes (main data) of the biosample. Note that attributes comes
@@ -103,6 +78,7 @@
       </xs:element>
 
     </xs:sequence>
+    <xs:attribute name="schema_version" type="xs:string" use="required"/>
   </xs:complexType>
 
   <!-- Types for BioSample XML -->

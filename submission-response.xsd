@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
 
     <!-- Submission processing report XML. -->
     <xs:element name="SubmissionStatus">
@@ -31,6 +31,7 @@
                                                                         b) intergral status of all actions</xs:documentation>
                 </xs:annotation>
             </xs:attribute>
+            <xs:attribute name="schema_version" type="xs:string" use="optional"/>
         </xs:complexType>
     </xs:element>
 

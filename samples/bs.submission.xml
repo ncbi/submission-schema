@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/submission.xsd?view=co" schema_version="2.0">
   <Description>
     <Organization role="participant" type="institute">
       <Name>Genomics Institute</Name>
@@ -16,7 +16,8 @@
     <AddData target_db="BioSample">
       <Data content_type="XML">
         <XmlContent>
-          <Sample>
+          <BioSample xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/biosample.xsd?view=co" schema_version="2.0">
             <SampleId/>
             <Descriptor>
               <Title>Bacterial, clinical or host-associated sample for Salmonella enterica subsp.
@@ -33,14 +34,10 @@
               <OrganismName>Candida albicans A123</OrganismName>
               <Strain>A123</Strain>
             </Organism>
-            <BioProjects>
-              <BioProject>
-                <PrimaryId db="BioProject">PRJNA123456</PrimaryId>
-              </BioProject>
-            </BioProjects>
-            <Models>
-              <Model>Pathogen.ba-cl</Model>
-            </Models>
+            <BioProject>
+              <PrimaryId db="BioProject">PRJNA123456</PrimaryId>
+            </BioProject>
+            <Package>Pathogen version 1.0 clinical/host-associated</Package>
             <Attributes>
               <Attribute attribute_name="collection_date">Apr-2004</Attribute>
               <Attribute attribute_name="geo_loc_name">USA</Attribute>
@@ -50,7 +47,7 @@
               <Attribute attribute_name="host-disease">missing</Attribute>
               <Attribute attribute_name="collected-by">Hospital</Attribute>
             </Attributes>
-          </Sample>
+          </BioSample>         
         </XmlContent>    
       </Data>
       <Identifier>

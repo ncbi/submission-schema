@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
+  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/SP.common.xsd?view=co" namespace="SP.common"/>
 
   <!-- Main Submission XML -->
   <xs:element name="Submission">
     <xs:complexType>
       <xs:sequence>
-
         <xs:element name="Description">
           <xs:complexType>
             <xs:sequence>
@@ -90,7 +90,7 @@
                       <xs:element name="SequenceData" type="typeSequenceData">
                         <xs:annotation><xs:documentation>Data about sequences, files are related to.</xs:documentation></xs:annotation>
                       </xs:element>
-                      <xs:element name="Publication" type="typePublication" maxOccurs="unbounded">
+                      <xs:element name="Publication" type="com:typePublication" maxOccurs="unbounded">
                         <xs:annotation><xs:documentation> Publications, related to files.</xs:documentation></xs:annotation>
                       </xs:element>
                     </xs:choice>
@@ -101,7 +101,7 @@
                       </xs:documentation>
                       </xs:annotation>
                     </xs:element>
-                    <xs:element name="Identifier" type="typeIdentifier" minOccurs="0" maxOccurs="1">
+                    <xs:element name="Identifier" type="com:typeIdentifier" minOccurs="0" maxOccurs="1">
                       <xs:annotation><xs:documentation>Submission/User/NCBI - defined id.</xs:documentation></xs:annotation>
                     </xs:element>
                   </xs:sequence>
@@ -146,7 +146,7 @@
                       <xs:element name="SequenceData" type="typeSequenceData">
                         <xs:annotation><xs:documentation>Data about sequences, files are related to.</xs:documentation></xs:annotation>
                       </xs:element>
-                      <xs:element name="Publication" type="typePublication" maxOccurs="unbounded">
+                      <xs:element name="Publication" type="com:typePublication" maxOccurs="unbounded">
                         <xs:annotation><xs:documentation> Publications, related to files.</xs:documentation></xs:annotation>
                       </xs:element>
                     </xs:choice>
@@ -157,7 +157,7 @@
                       </xs:documentation>
                       </xs:annotation>
                     </xs:element>
-                    <xs:element name="Identifier" type="typeIdentifier" minOccurs="0" maxOccurs="1">
+                    <xs:element name="Identifier" type="com:typeIdentifier" minOccurs="0" maxOccurs="1">
                       <xs:annotation><xs:documentation>Submission/User/NCBI - defined id.</xs:documentation></xs:annotation>
                     </xs:element>
                   </xs:sequence>
@@ -168,7 +168,7 @@
               <xs:element name="ChangeStatus">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Target" type="typeRefId">
+                    <xs:element name="Target" type="com:typeRefId">
                       <xs:annotation>
                         <xs:documentation>
                         The ChangeStatus command is applied to Target archive specified by @db and id in the target archive specified by element body 
@@ -208,6 +208,7 @@
         </xs:element>
 
       </xs:sequence>
+      <xs:attribute name="schema_version" type="xs:string" use="optional"/>
       <xs:attribute name="resubmit_of" type="xs:string" use="optional">
         <xs:annotation>
           <xs:documentation>Reference to the existing submission in the case of re-submit.</xs:documentation>
@@ -240,13 +241,6 @@
         <xs:documentation>
         Target database context (if known) for the data, e.g. phs123 for dbGaP study, SRX123 for SRA experiment, etc 
       </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="local_id" type="xs:string" use="optional">
-      <xs:annotation>
-        <xs:documentation>
-          DEPRICATED (to the favor of RefId element): Local id, assigned by submitter. It makes sense from the submitter standpoint. 
-        </xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -423,75 +417,10 @@
     </xs:attribute>
   </xs:complexType>
 
-  <!-- Generic address (postal) -->
-  <xs:complexType name="typeAddress">
-    <xs:sequence>
-      <xs:element name="Department" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Department: eg Department of Medicine</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Institution" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Institution: eg Washington University</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Street" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Street address: 123 Main St.  Suite 104</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="City" type="xs:string" minOccurs="1" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>City: New York</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Sub" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Subdivision of Country(state, province, etc.):  New York </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Country" type="xs:string" minOccurs="1" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Country: USA</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-
-    </xs:sequence>
-    <xs:attribute name="postal_code" type="xs:string" use="optional"/>
-  </xs:complexType>
-
-  <!-- Name of a person -->
-  <xs:complexType name="typeName">
-    <xs:sequence>
-      <xs:element name="First" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="Last" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="Middle" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Full middle name or initials </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <!-- Contact info - an address with email -->
-  <xs:complexType name="typeContactInfo">
-    <xs:sequence>
-      <xs:element type="typeAddress" name="Address" minOccurs="0" maxOccurs="1"/>
-      <xs:element type="typeName" name="Name" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-    <xs:attribute name="email" type="xs:string" use="required"/>
-	<xs:attribute name="sec_email" type="xs:string" use="optional"/>
-    <xs:attribute name="phone" type="xs:string"/>
-    <xs:attribute name="fax" type="xs:string"/>
-  </xs:complexType>
-
-
-  <!-- Account - a person with logon -->
+    <!-- Account - a person with logon -->
   <xs:complexType name="typeAccount">
     <xs:sequence>
-      <xs:element name="Contact" minOccurs="0" type="typeContactInfo">
+      <xs:element name="Contact" minOccurs="0" type="com:typeContactInfo">
         <xs:annotation>
           <xs:documentation>Contact information if known</xs:documentation>
         </xs:annotation>
@@ -540,12 +469,12 @@
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
-      <xs:element name="Address" type="typeAddress" minOccurs="0" maxOccurs="1">
+      <xs:element name="Address" type="com:typeAddress" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Address of the organization</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="Contact" type="typeContactInfo" minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Contact" type="com:typeContactInfo" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation>
           <xs:documentation>Contact(s) with organization when known</xs:documentation>
         </xs:annotation>
@@ -589,109 +518,6 @@
     </xs:attribute>
   </xs:complexType>
 
-
-
-  <!--  Local identifier in submission context. -->
-  <xs:complexType name="typeLocalId">
-    <xs:annotation><xs:documentation>Local id in submission context.</xs:documentation></xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="submission_id" use="optional">
-          <xs:annotation><xs:documentation>Optional submission id. If omitted, the current submission is assumed.</xs:documentation></xs:annotation>                    
-        </xs:attribute>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  <!-- Unique identifier in submitter context (Submitter Provided Unique ID). -->
-  <xs:complexType name="typeSPUID">
-    <xs:annotation><xs:documentation> Unique identifier in submitter context (Submitter Provided Unique ID). </xs:documentation></xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="submitter_id" use="optional">
-          <xs:annotation><xs:documentation> Optional submitter id - eg JGI. If omitted, the current submitter is assumed. </xs:documentation></xs:annotation>                    
-        </xs:attribute>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  
-  
-  <!-- Accession - globaly unique id -->
-  <xs:complexType name="typePrimaryId">
-    <xs:annotation>
-      <xs:documentation>
-        Unique accession in NCBI Archive. Accession is assigned only after object is successfully loaded into NCBI archive. 
-        Optioanl integer id is for internal NCBI use only.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute type="xs:string" name="db" use="optional">
-          <xs:annotation><xs:documentation>Optional identifier of the archive. Can be ommitted if defined by context. </xs:documentation></xs:annotation>                    
-        </xs:attribute>
-        <xs:attribute name="id" type="xs:integer" use="optional">
-          <xs:annotation>
-            <xs:documentation> 
-              Host archive integer id. May be assigned only by NCBI.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>  
-  
-  <!-- Reference to a record inside NCBI database or in Submission Portal. -->
-  <xs:complexType name="typeRefId">
-    <xs:annotation>
-      <xs:documentation> Reference to a record inside NCBI database or in Submission Portal. </xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:element name="LocalId" type="typeLocalId" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation> Local id in submission context. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="SPUID" type="typeSPUID" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation> User-supplied unique id. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="PrimaryId" type="typePrimaryId" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation> NCBI accession. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:choice>
-  </xs:complexType>    
-  
-  
-  
-  <!-- Identifier placed on the submitted object. -->
-  <xs:complexType name="typeIdentifier">
-    <xs:sequence>
-      <xs:annotation>
-        <xs:documentation> Identifier placed on submitted object by submitter. This is used to tie the submitted object with assigned accession. </xs:documentation>
-      </xs:annotation>
-      <xs:element name="PrimaryId" minOccurs="0" maxOccurs="1" type="typePrimaryId">
-        <xs:annotation>
-          <xs:documentation> Used for updates: NCBI accession of the record being updated. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="SPUID" type="typeSPUID" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation> An identifier from external database qualified by a namespace. Similar to seq-id type general. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="LocalId" type="typeLocalId" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation> Local id in submission context. </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  
-
-
   <!-- 
     Attributes of data (files and inlined data)
   -->
@@ -710,7 +536,7 @@
   <!-- Reference ID attribute  -->
   <xs:complexType name="typeFileAttributeRefId">
     <xs:sequence>
-      <xs:element name="RefId" type="typeRefId">
+      <xs:element name="RefId" type="com:typeRefId">
       </xs:element>
     </xs:sequence>
     <xs:attribute name="name" type="xs:string">
@@ -732,98 +558,9 @@
           <xs:attribute name="type" type="xs:string" use="required"></xs:attribute> <!-- TODO - restrict this by reasonable type set -->
         </xs:complexType>
       </xs:element>
-      <xs:element name="AuthorSet" type="typeAuthorSet"></xs:element>
+      <xs:element name="AuthorSet" type="com:typeAuthorSet"></xs:element>
     </xs:sequence>
   </xs:complexType>
-  
-  
-  
-  <!-- Set of authors -->
-  <xs:complexType name="typeAuthorSet">
-    <xs:sequence maxOccurs="1">
-      <xs:element maxOccurs="unbounded" name="Author">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Name" minOccurs="0" type="typeName"> </xs:element>
-            <xs:element name="Consortium" type="xs:string" minOccurs="0"/>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  
-  
-  <!-- Publication -->
-  <xs:complexType name="typePublication">
-    <xs:sequence>
-      <xs:element name="AuthorSet" type="typeAuthorSet" maxOccurs="1">
-      </xs:element>
-      <xs:element name="Reference" type="xs:string" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>Free form citation.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="StructuredCitation" minOccurs="0">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Title" type="xs:string"> </xs:element>
-            <xs:element name="Journal">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="JournalTitle" type="xs:string">
-                    <xs:annotation>
-                      <xs:documentation>Journal title in ISO-JTO format</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
-                  <xs:element name="Year" minOccurs="0" type="xs:string"/>
-                  <xs:element name="Volume" minOccurs="0" type="xs:string"/>
-                  <xs:element name="Issue" minOccurs="0" type="xs:string"/>
-                  <xs:element name="PagesFrom" minOccurs="0" type="xs:string"/>
-                  <xs:element name="PagesTo" minOccurs="0" type="xs:string"/>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="DbType">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="ePMC"> </xs:enumeration>
-            <xs:enumeration value="ePubmed"> </xs:enumeration>
-            <xs:enumeration value="eDOI"> </xs:enumeration>
-            <xs:enumeration value="eNotAvailable">
-              <xs:annotation>
-                <xs:documentation> Use for Unpublished, in press or other databases. </xs:documentation>
-              </xs:annotation>
-            </xs:enumeration>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="id" type="xs:string">
-      <xs:annotation>
-        <xs:documentation> Unique publication identifier in the specified database that is specific to the project. </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="date" type="xs:dateTime">
-      <xs:annotation>
-        <xs:documentation> Publication date. </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="status">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="ePublished"/>
-          <xs:enumeration value="eInPress"/>
-          <xs:enumeration value="eUnpublished"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:complexType>
-  
-  
   
   <!-- 
     Release status of the data (files and inlined data)
