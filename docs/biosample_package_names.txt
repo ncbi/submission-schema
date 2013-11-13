@@ -1,0 +1,96 @@
+#Package	Display name
+MIGS.ba.3.0	MIGS: cultured bacteria/archaea; version 3.0
+MIGS.eu.3.0	MIGS: eukaryote; version 3.0
+MIGS.vi.3.0	MIGS: virus; version 3.0
+MIMARKS.specimen.3.0	MIMARKS: specimen; version 3.0
+MIMS.me.air.3.0	MIMS: metagenome/environmental, air; version 3.0
+MIGS.ba.air.3.0	MIGS: cultured bacteria/archaea, air; version 3.0
+MIGS.eu.air.3.0	MIGS: eukaryote, air; version 3.0
+MIGS.vi.air.3.0	MIGS: virus, air; version 3.0
+MIMARKS.specimen.air.3.0	MIMARKS: specimen, air; version 3.0
+MIMARKS.survey.air.3.0	MIMARKS: survey, air; version 3.0
+MIMS.me.host-associated.3.0	MIMS: metagenome/environmental, host-associated; version 3.0
+MIGS.ba.host-associated.3.0	MIGS: cultured bacteria/archaea, host-associated; version 3.0
+MIGS.eu.host-associated.3.0	MIGS: eukaryote, host-associated; version 3.0
+MIGS.vi.host-associated.3.0	MIGS: virus, host-associated; version 3.0
+MIMARKS.specimen.host-associated.3.0	MIMARKS: specimen, host-associated; version 3.0
+MIMARKS.survey.host-associated.3.0	MIMARKS: survey, host-associated; version 3.0
+MIMS.me.human-associated.3.0	MIMS: metagenome/environmental, human-associated; version 3.0
+MIGS.ba.human-associated.3.0	MIGS: cultured bacteria/archaea, human-associated; version 3.0
+MIGS.eu.human-associated.3.0	MIGS: eukaryote, human-associated; version 3.0
+MIGS.vi.human-associated.3.0	MIGS: virus, human-associated; version 3.0
+MIMARKS.specimen.human-associated.3.0	MIMARKS: specimen, human-associated; version 3.0
+MIMARKS.survey.human-associated.3.0	MIMARKS: survey, human-associated; version 3.0
+MIMS.me.human-gut.3.0	MIMS: metagenome/environmental, human-gut; version 3.0
+MIGS.ba.human-gut.3.0	MIGS: cultured bacteria/archaea, human-gut; version 3.0
+MIGS.eu.human-gut.3.0	MIGS: eukaryote, human-gut; version 3.0
+MIGS.vi.human-gut.3.0	MIGS: virus, human-gut; version 3.0
+MIMARKS.specimen.human-gut.3.0	MIMARKS: specimen, human-gut; version 3.0
+MIMARKS.survey.human-gut.3.0	MIMARKS: survey, human-gut; version 3.0
+MIMS.me.human-oral.3.0	MIMS: metagenome/environmental, human-oral; version 3.0
+MIGS.ba.human-oral.3.0	MIGS: cultured bacteria/archaea, human-oral; version 3.0
+MIGS.eu.human-oral.3.0	MIGS: eukaryote, human-oral; version 3.0
+MIGS.vi.human-oral.3.0	MIGS: virus, human-oral; version 3.0
+MIMARKS.specimen.human-oral.3.0	MIMARKS: specimen, human-oral; version 3.0
+MIMARKS.survey.human-oral.3.0	MIMARKS: survey, human-oral; version 3.0
+MIMS.me.human-skin.3.0	MIMS: metagenome/environmental, human-skin; version 3.0
+MIGS.ba.human-skin.3.0	MIGS: cultured bacteria/archaea, human-skin; version 3.0
+MIGS.eu.human-skin.3.0	MIGS: eukaryote, human-skin; version 3.0
+MIGS.vi.human-skin.3.0	MIGS: virus, human-skin; version 3.0
+MIMARKS.specimen.human-skin.3.0	MIMARKS: specimen, human-skin; version 3.0
+MIMARKS.survey.human-skin.3.0	MIMARKS: survey, human-skin; version 3.0
+MIMS.me.human-vaginal.3.0	MIMS: metagenome/environmental, human-vaginal; version 3.0
+MIGS.ba.human-vaginal.3.0	MIGS: cultured bacteria/archaea, human-vaginal; version 3.0
+MIGS.eu.human-vaginal.3.0	MIGS: eukaryote, human-vaginal; version 3.0
+MIGS.vi.human-vaginal.3.0	MIGS: virus, human-vaginal; version 3.0
+MIMARKS.specimen.human-vaginal.3.0	MIMARKS: specimen, human-vaginal; version 3.0
+MIMARKS.survey.human-vaginal.3.0	MIMARKS: survey, human-vaginal; version 3.0
+MIMS.me.microbial.3.0	MIMS: metagenome/environmental, microbial; version 3.0
+MIGS.ba.microbial.3.0	MIGS: cultured bacteria/archaea, microbial; version 3.0
+MIGS.eu.microbial.3.0	MIGS: eukaryote, microbial; version 3.0
+MIGS.vi.microbial.3.0	MIGS: virus, microbial; version 3.0
+MIMARKS.specimen.microbial.3.0	MIMARKS: specimen, microbial; version 3.0
+MIMARKS.survey.microbial.3.0	MIMARKS: survey, microbial; version 3.0
+MIMS.me.miscellaneous.3.0	MIMS: metagenome/environmental, miscellaneous; version 3.0
+MIGS.ba.miscellaneous.3.0	MIGS: cultured bacteria/archaea, miscellaneous; version 3.0
+MIGS.eu.miscellaneous.3.0	MIGS: eukaryote, miscellaneous; version 3.0
+MIGS.vi.miscellaneous.3.0	MIGS: virus, miscellaneous; version 3.0
+MIMARKS.specimen.miscellaneous.3.0	MIMARKS: specimen, miscellaneous; version 3.0
+MIMARKS.survey.miscellaneous.3.0	MIMARKS: survey, miscellaneous; version 3.0
+MIMS.me.plant-associated.3.0	MIMS: metagenome/environmental, plant-associated; version 3.0
+MIGS.ba.plant-associated.3.0	MIGS: cultured bacteria/archaea, plant-associated; version 3.0
+MIGS.eu.plant-associated.3.0	MIGS: eukaryote, plant-associated; version 3.0
+MIGS.vi.plant-associated.3.0	MIGS: virus, plant-associated; version 3.0
+MIMARKS.specimen.plant-associated.3.0	MIMARKS: specimen, plant-associated; version 3.0
+MIMARKS.survey.plant-associated.3.0	MIMARKS: survey, plant-associated; version 3.0
+MIMS.me.sediment.3.0	MIMS: metagenome/environmental, sediment; version 3.0
+MIGS.ba.sediment.3.0	MIGS: cultured bacteria/archaea, sediment; version 3.0
+MIGS.eu.sediment.3.0	MIGS: eukaryote, sediment; version 3.0
+MIGS.vi.sediment.3.0	MIGS: virus, sediment; version 3.0
+MIMARKS.specimen.sediment.3.0	MIMARKS: specimen, sediment; version 3.0
+MIMARKS.survey.sediment.3.0	MIMARKS: survey, sediment; version 3.0
+MIMS.me.soil.3.0	MIMS: metagenome/environmental, soil; version 3.0
+MIGS.ba.soil.3.0	MIGS: cultured bacteria/archaea, soil; version 3.0
+MIGS.eu.soil.3.0	MIGS: eukaryote, soil; version 3.0
+MIGS.vi.soil.3.0	MIGS: virus, soil; version 3.0
+MIMARKS.specimen.soil.3.0	MIMARKS: specimen, soil; version 3.0
+MIMARKS.survey.soil.3.0	MIMARKS: survey, soil; version 3.0
+MIMS.me.wastewater.3.0	MIMS: metagenome/environmental, wastewater; version 3.0
+MIGS.ba.wastewater.3.0	MIGS: cultured bacteria/archaea, wastewater; version 3.0
+MIGS.eu.wastewater.3.0	MIGS: eukaryote, wastewater; version 3.0
+MIGS.vi.wastewater.3.0	MIGS: virus, wastewater; version 3.0
+MIMARKS.specimen.wastewater.3.0	MIMARKS: specimen, wastewater; version 3.0
+MIMARKS.survey.wastewater.3.0	MIMARKS: survey, wastewater; version 3.0
+MIMS.me.water.3.0	MIMS: metagenome/environmental, water; version 3.0
+MIGS.ba.water.3.0	MIGS: cultured bacteria/archaea, water; version 3.0
+MIGS.eu.water.3.0	MIGS: eukaryote, water; version 3.0
+MIGS.vi.water.3.0	MIGS: virus, water; version 3.0
+MIMARKS.specimen.water.3.0	MIMARKS: specimen, water; version 3.0
+MIMARKS.survey.water.3.0	MIMARKS: survey, water; version 3.0
+Model.organism.animal.1.0	Model organism or animal; version 1.0
+Human.1.0	Human; version 1.0
+Plant.1.0	Plant; version 1.0
+Microbe.environmental.1.0	Microbe or environmental; version 1.0
+Virus.1.0	Virus; version 1.0
+Pathogen.cl.1.0	Pathogen: clinical or host-associated; version 1.0
+Pathogen.env.1.0	Pathogen: environmental/food/other; version 1.0
