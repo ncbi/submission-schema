@@ -45,6 +45,9 @@
           </BioSample>
         </XmlContent>
       </Data>
+      <Identifier>
+        <SPUID spuid_namespace="Institute Name">Unique submitter identifier</SPUID>
+      </Identifier>
    </AddData>
   </Action>
 </Submission>

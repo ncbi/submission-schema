@@ -52,10 +52,14 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="submitter_id" use="optional">
                     <xs:annotation>
-                        <xs:documentation> Optional submitter id - eg JGI. If omitted, the current
-                            submitter is assumed. </xs:documentation>
+                        <xs:documentation>DEPRICATED and will be removed: Optional submitter id - eg JGI. If omitted, the current submitter is assumed. </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
+                <xs:attribute type="xs:string" name="spuid_namespace" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>Will be required: Identifier of the submitter namespace: This is a controlled vocabulary on NCBI side.</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>                    
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -98,7 +102,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="SPUID" type="com:typeSPUID" minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="SPUID" type="com:typeSPUID" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation> An identifier from external database qualified by a
                         namespace. Similar to seq-id type general. </xs:documentation>

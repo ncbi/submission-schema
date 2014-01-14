@@ -77,6 +77,9 @@
         <xs:attribute name="status" type="typeStatus" use="required">
             <xs:annotation><xs:documentation>Processing status of the action.</xs:documentation></xs:annotation>
         </xs:attribute>
+        <xs:attribute name="notify_submitter" type="xs:boolean" use="optional">
+            <xs:annotation><xs:documentation>Optional flag from target db to send email notification back to submitter (true or false)</xs:documentation></xs:annotation>
+        </xs:attribute>        
     </xs:complexType>
 
     
@@ -97,7 +100,7 @@
                 </xs:attribute>      
                 <xs:attribute name="url" type="xs:string" use="optional">
                     <xs:annotation><xs:documentation>URL link to the object.</xs:documentation></xs:annotation>
-                </xs:attribute>  
+                </xs:attribute>   
                 <xs:attribute name="local_id" type="xs:string" use="optional">
                     <xs:annotation>
                         <xs:documentation>
@@ -105,14 +108,25 @@
                         </xs:documentation>        
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="name" type="xs:string" use="optional">
-                    <xs:annotation><xs:documentation>Name of the object.</xs:documentation></xs:annotation>
-                </xs:attribute>
                 <xs:attribute name="submitter_id" type="xs:string" use="optional">
-                    <xs:annotation><xs:documentation>typeUserId: Identificator of submitter. </xs:documentation></xs:annotation>
+                    <xs:annotation><xs:documentation>Deprecated, use spuid_namespace instead</xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="spuid_namespace" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>This is the namespace for spuid, usually associated with submitter. </xs:documentation></xs:annotation>
                 </xs:attribute>
                 <xs:attribute name="user_id" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>Deprecated, use spuid instead</xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="spuid" type="xs:string" use="optional">
                     <xs:annotation><xs:documentation>typeUserId: ID in the submitter namespace. </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="name" use="optional">
+                    <xs:annotation><xs:documentation>Name of the object.</xs:documentation></xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:maxLength value="256"/>
+                        </xs:restriction>
+                    </xs:simpleType>
                 </xs:attribute>
                 <xs:attribute name="status" use="optional">
                     <xs:annotation><xs:documentation>New obejct created, existing object updated, deleted</xs:documentation></xs:annotation>

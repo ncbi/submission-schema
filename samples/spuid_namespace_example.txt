@@ -1,0 +1,56 @@
+Submission action:
+  <Action>
+    <AddData target_db="BioSample">
+      <Data content_type="XML">
+        <XmlContent>
+          <BioSample schema_version="2.0">
+            <SampleId>
+              <SPUID spuid_namespace="CFSAN">CIES-13-0265:sp_3.010114.3</SPUID><!-- SAMN02335374 -->
+            </SampleId>
+            <Descriptor>
+              <Title>Pathogen sample from Salmonella enterica</Title>
+            </Descriptor>
+            <Organism>
+              <OrganismName>Salmonella enterica</OrganismName>
+            </Organism>
+            <BioProject>
+              <LocalId>PRJNA217342:sp_3.010114.3</LocalId>
+            </BioProject>
+            <Package>Pathogen.env</Package>
+            <Attributes>
+              <Attribute attribute_name="strain">CIES-13-0265</Attribute>
+              <Attribute attribute_name="collected by">CIES</Attribute>
+              <Attribute attribute_name="collection date">2013-05-13</Attribute>
+              <Attribute attribute_name="isolation source">water</Attribute>
+              <Attribute attribute_name="geographic location (country and/or sea,region)">Mexico:Sinaloa</Attribute>
+              <Attribute attribute_name="geographic location (latitude and longitude)">missing</Attribute>
+              <Attribute attribute_name="serovar">Newport</Attribute>
+              <Attribute attribute_name="Subspecies">enterica</Attribute>
+              <Attribute attribute_name="isolate_name_alias">13-CIES-0265</Attribute>
+              <Attribute attribute_name="VirulenceMarker">InvA</Attribute>
+            </Attributes>
+          </BioSample>
+        </XmlContent>
+      </Data>
+      <Identifier>
+        <SPUID spuid_namespace="CFSAN">CIES-13-0265:sp_3.010114.3</SPUID><!-- SAMN02335374 -->
+      </Identifier>
+    </AddData>
+  </Action>
+
+
+Response:
+<Action action_id="..." target_db="BioSample" status="processed-ok">
+  <Response status="processed-ok" error_source="data">
+    <Message severity="info">Successfully loaded</Message>
+    <Object target_db="BioSample" object_id="..." accession="..." url="http://www.ncbi.nlm.nih.gov/biosample/..." status="updated" last_update="..." name="..." spuid="CIES-13-0265:sp_3.010114.3" spuid_namespace=”CFSAN”>
+      <Meta>
+        <Organism taxid="...">...</Organism>
+        <SampleName>...</SampleName>
+        <Label>...</Label>
+        <BioProjectID>...</BioProjectID>
+        <Status>live</Status>
+      </Meta>
+    </Object>
+  </Response>
+</Action>

@@ -54,7 +54,7 @@
                 </XmlContent>
             </Data>
             <Identifier>
-                <SPUID submitter_id="Genomics Institute">db2:ID123456</SPUID>
+                <SPUID spuid_namespace="Genomics Institute">db2:ID123456</SPUID>
             </Identifier>
         </AddData>
     </Action>
