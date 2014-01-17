@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
-  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/SP.common.xsd?view=co" namespace="SP.common"/>
+  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
 
   <!-- Main Submission XML -->
   <xs:element name="Submission">
@@ -203,7 +203,7 @@
                 </xs:complexType>
               </xs:element>
             </xs:choice>
-
+            <xs:attribute name="action_id" type="xs:token"/>
           </xs:complexType>
         </xs:element>
 
@@ -217,6 +217,7 @@
       <xs:attribute name="submitted" type="xs:date" use="optional"/>
       <xs:attribute name="last_update" type="xs:date" use="optional"/>
       <xs:attribute name="status" type="xs:string" use="optional"/>
+      <xs:attribute name="submission_id" type="xs:token"/>
     </xs:complexType>
   </xs:element>
 
@@ -291,6 +292,7 @@
             <xs:enumeration value="sra-sample-xml-v2"/>
             <xs:enumeration value="sra-run-xml-v2"/>
             <xs:enumeration value="sra-analysis-xml-v2"/>
+            <xs:enumeration value="sra-run-fastq"/>
             <xs:enumeration value="project-core-xml-v1"/>
             <xs:enumeration value="wgs-contigs-sqn"/>
             <xs:enumeration value="wgs-unplaced-scaffolds-agp"/>
@@ -426,7 +428,7 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="account_id" type="xs:string" use="required">
+    <xs:attribute name="account_id" type="xs:string" use="optional">
       <xs:annotation>
         <xs:documentation>Submission Portal account id</xs:documentation>
       </xs:annotation>
@@ -545,11 +547,11 @@
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  
+
   <!-- Data about sequences -->
   <xs:complexType name="typeSequenceData">
     <xs:sequence>
-      <xs:element name="Sequence" minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Sequence">
         <xs:complexType>
           <xs:sequence>
             <xs:element name="Attribute" type="typeFileAttribute" minOccurs="1" maxOccurs="unbounded"></xs:element>
@@ -561,7 +563,7 @@
       <xs:element name="AuthorSet" type="com:typeAuthorSet"></xs:element>
     </xs:sequence>
   </xs:complexType>
-  
+
   <!-- 
     Release status of the data (files and inlined data)
   -->
@@ -617,6 +619,12 @@
       </xs:enumeration>
       <xs:enumeration value="dbVar"/>
       <xs:enumeration value="SRA"/>
+      <xs:enumeration value="SRA.experiment"/>
+      <xs:enumeration value="SRA.run"/>
+      <xs:enumeration value="SP"/>
+      <xs:enumeration value="PGAP">
+        <xs:annotation><xs:documentation>PGAP annotations in Submission Portal</xs:documentation></xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
