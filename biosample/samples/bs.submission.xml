@@ -18,7 +18,7 @@
     <AddData target_db="BioSample">
       <Data content_type="XML">
         <XmlContent>
-          <BioSample schema_version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/biosample.xsd?view=co">
+          <BioSample schema_version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/biosample/biosample.xsd?view=co">
             <SampleId>
               <SPUID submitter_id="Institute Name">Unique submitter identifier</SPUID>
             </SampleId>
@@ -27,7 +27,7 @@
               <Description><p>Optional sample description.</p></Description>
               <ExternalLink label="Displayed text for URL"><URL>http://www.thisistheurl.org</URL></ExternalLink>
             </Descriptor>
-            <Organism taxonomy_name="Escherichia coli HVH 138 (4-6066704)"/>
+            <Organism><OrganismName>"Escherichia coli HVH 138 (4-6066704)"</OrganismName></Organism>
             <BioProject>
               <PrimaryId db="BioProject">PRJNA186165</PrimaryId>
             </BioProject>
