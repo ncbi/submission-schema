@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Submission schema_version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/submission.xsd?view=co">
+  <Description>
+    <Comment>New Submission</Comment>
+    <Organization role="owner" type="institute">
+      <Name>Institute Name</Name>
+      <Contact email="jdoe@institute.org">
+        <Name>
+          <First>Jane</First>
+          <Last>Doe</Last>
+        </Name>
+      </Contact>
+    </Organization>
+  </Description>
+  <Action>
+    <AddFiles target_db="TSA">
+      <File file_path="tsadata.sqn">
+        <DataType>tsa-seqsubmit-sqn</DataType>
+      </File>
+      <AttributeRefId><RefId><PrimaryId db="BioProject">PRJNA123</PrimaryId></RefId></AttributeRefId>
+      <AttributeRefId><RefId><PrimaryId db="BioSample">SAMN456</PrimaryId></RefId></AttributeRefId>
+      <Attribute name="assembly_name">New assembly</Attribute>
+      <Attribute name="assembly_desc">CLC bio's de novo assembly</Attribute>
+      <Attribute name="assembly_method_version">CLC Genomics Workbench 5.1</Attribute>
+      <Attribute name="seq_tech">454</Attribute>
+      <Attribute name="coverage">5x</Attribute>
+      <Attribute name="primary_data">sra</Attribute> <!-- sra or est -->
+      <Attribute name="sra_ids">SRR123</Attribute>
+      <Status> 
+        <!-- <Release/> - use for immediate release -->
+        <SetReleaseDate release_date="2014-09-01" /> 
+      </Status>
+      <Identifier><SPUID spuid_namespace="Organization">TSA987</SPUID></Identifier> <!-- Submitter provided unique id -->
+    </AddFiles>
+  </Action>
+</Submission>
