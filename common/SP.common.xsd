@@ -189,8 +189,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <!-- Submitted file attributes. -->
-
 
     <!-- Publication. Can be either structured or free form citations as well as link to the publication database. -->
     <xs:complexType name="typePublication">
