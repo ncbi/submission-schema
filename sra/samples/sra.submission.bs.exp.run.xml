@@ -123,6 +123,9 @@
           </EXPERIMENT>
         </XmlContent>
       </Data>
+      <Identifier>
+        <SPUID spuid_namespace="CFSAN">CFSAN006236_01:2</SPUID>
+      </Identifier>      
     </AddData>
   </Action>
 

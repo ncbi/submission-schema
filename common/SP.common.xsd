@@ -190,34 +190,7 @@
     </xs:complexType>
 
     <!-- Submitted file attributes. -->
-    <xs:complexType name="typeFileAttribute">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="name" type="xs:string">
-                    <xs:annotation>
-                        <xs:documentation> Named attributes, attached to the file.
-                        </xs:documentation>
-                    </xs:annotation>
-                </xs:attribute>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
 
-    <xs:complexType name="typeSequenceData">
-        <xs:sequence>
-            <xs:element name="Sequence">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="Attribute" type="com:typeFileAttribute" minOccurs="1"
-                            maxOccurs="unbounded"/>
-                    </xs:sequence>
-                    <xs:attribute name="id" type="xs:string" use="required"/>
-                    <xs:attribute name="type" type="xs:string" use="required"/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="AuthorSet" type="com:typeAuthorSet"/>
-        </xs:sequence>
-    </xs:complexType>
 
     <!-- Publication. Can be either structured or free form citations as well as link to the publication database. -->
     <xs:complexType name="typePublication">
