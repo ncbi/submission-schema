@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SubmissionStatus status="processed-ok" submission_id="SUB123">
+    <Action action_id="SUB123-1" target_db="TSA" notify_submitter="true" status="processed-ok">
+        <Response status="processed-ok">
+            <Message severity="info" />
+            <File file_id="km0RcixA13k40ASRzlEFTfDWg2d" file_path="final-submit7.sqn" />
+            <Object target_db="nuccore" object_id="GAHW00000000" accession="GAHW00000000" url="http://www.ncbi.nlm.nih.gov/nuccore/GAHW00000000" status="new" />
+        </Response>
+    </Action>
+</SubmissionStatus>

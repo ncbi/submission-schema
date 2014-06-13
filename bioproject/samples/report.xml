@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SubmissionStatus status="processed-ok" submission_id="SUB123">
+    <Action action_id="SUB123-db2:ID123456" status="processed-ok" target_db="bioproject" notify_submitter="true">
+        <Response status="processed-ok">
+            <Object accession="PRJNA456" last_update="2014-05-23T18:43:00Z" name="Candida albicans A123" object_id="2347" spuid="db2:ID123456" spuid_namespace="Genomics Institute" status="new" target_db="bioproject">
+                <LocusTagPrefix>LTP1</LocusTagPrefix>
+                <taxonomy_request_id>234</taxonomy_request_id>
+                <Organism taxid="1182537">Candida albicans A123</Organism>
+            </Object>
+        </Response>
+    </Action>
+</SubmissionStatus>
