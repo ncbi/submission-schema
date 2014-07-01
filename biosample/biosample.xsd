@@ -2,7 +2,7 @@
 <!-- $Id$ -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
-  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
+  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co" namespace="SP.common"/>
 
   <!-- BioSample object -->
   <xs:element name="BioSample" type="typeBioSample"/>
@@ -42,7 +42,7 @@
         <xs:annotation>
           <xs:documentation>
               Name of attribute package used to validate the sample. See
-              http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/docs/biosample_package_names.txt?view=log
+              http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/biosample/docs/biosample_package_names.txt?view=log
               for the full list of available packages.
            </xs:documentation>
         </xs:annotation>
@@ -57,7 +57,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Attribute" type="typeAttribute" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="Attribute" type="typeAttribute" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
