@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
-  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co" namespace="SP.common"/>
+  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
 
   <!-- Main Submission XML -->
   <xs:element name="Submission">
@@ -316,6 +316,11 @@
             <xs:enumeration value="complete-genomes-annotate-fasta"/>
             <xs:enumeration value="complete-genomes-annotate-template"/>
             <xs:enumeration value="complete-genomes-replicon"/>
+            <xs:enumeration value="genbank-sequences-fasta"/>
+            <xs:enumeration value="genbank-srcmods-tbl"/>
+            <xs:enumeration value="genbank-sequences-filtered-fasta"/>
+            <xs:enumeration value="genbank-sequences-fastaval-xml"/>
+            <xs:enumeration value="genbank-srcmods-filtered-tbl"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -518,6 +523,7 @@
         <xs:documentation>URL of the organization website.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="group_id" type="xs:string" use="optional"/>
   </xs:complexType>
 
   <!-- 
@@ -624,6 +630,9 @@
       <xs:enumeration value="SP"/>
       <xs:enumeration value="PGAP">
         <xs:annotation><xs:documentation>PGAP annotations in Submission Portal</xs:documentation></xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GenBank">
+        <xs:annotation><xs:documentation>GenBank Web submissions processor</xs:documentation></xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
