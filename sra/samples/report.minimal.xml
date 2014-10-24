@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SubmissionStatus status="processed-ok" submission_id="SUB12345">
+    <Action action_id="SUB716890-folder1" target_db="SRA" status="processed-ok">
+        <Response status="processed-ok">
+            <Object target_db="SRA" object_id="RUN:345678" spuid_namespace="CFSAN" spuid="CFSAN006236_01:3" accession="SRR56789" status="new"/>
+        </Response>
+    </Action>
+</SubmissionStatus>
