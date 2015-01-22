@@ -321,6 +321,8 @@
             <xs:enumeration value="genbank-sequences-filtered-fasta"/>
             <xs:enumeration value="genbank-sequences-fastaval-xml"/>
             <xs:enumeration value="genbank-srcmods-filtered-tbl"/>
+            <xs:enumeration value="genbank-sequences-report-txt"/>
+            <xs:enumeration value="genbank-sequences-report-tbl"/>
             <xs:enumeration value="methylation-data"/>
           </xs:restriction>
         </xs:simpleType>
