@@ -352,6 +352,7 @@
             <xs:element type="com:typeName" name="Name" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
         <xs:attribute name="email" type="xs:string" use="required"/>
+        <xs:attribute name="sec_email" type="xs:string" use="optional"/>
         <xs:attribute name="phone" type="xs:string"/>
         <xs:attribute name="fax" type="xs:string"/>
     </xs:complexType>

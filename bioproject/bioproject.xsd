@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
     
-    <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co" namespace="SP.common"/>
+    <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/SP.common.xsd?view=co" namespace="SP.common"/>
     <!-- BioProject object -->
     <xs:element name="Project" type="typeProject"> </xs:element>
 
@@ -242,6 +242,8 @@
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:token">
                                                             <xs:enumeration value="genome sequencing"> </xs:enumeration>
+                                                            <xs:enumeration value="raw sequence reads"> </xs:enumeration>
+                                                            <xs:enumeration value="genome sequencing and assembly"> </xs:enumeration>
                                                             <xs:enumeration value="metagenome"> </xs:enumeration>
                                                             <xs:enumeration value="metagenomic assembly"> </xs:enumeration>
                                                             <xs:enumeration value="assembly"> </xs:enumeration>
@@ -250,6 +252,8 @@
                                                             <xs:enumeration value="map"> </xs:enumeration>
                                                             <xs:enumeration value="clone ends"> </xs:enumeration>
                                                             <xs:enumeration value="targeted loci"> </xs:enumeration>
+                                                            <xs:enumeration value="targeted loci cultured"> </xs:enumeration>
+                                                            <xs:enumeration value="targeted loci environmental"> </xs:enumeration>
                                                             <xs:enumeration value="random survey"> </xs:enumeration>
                                                             <xs:enumeration value="exome"> </xs:enumeration>
                                                             <xs:enumeration value="variation"> </xs:enumeration>

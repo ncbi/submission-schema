@@ -84,6 +84,11 @@
                           </xs:documentation>
                         </xs:annotation>
                       </xs:element>
+                      <xs:element name="Meta" type="typeInlineData">
+                        <xs:annotation>
+                          <xs:documentation>File metadata in XML format.</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
                       <xs:element name="AttributeRefId" type="typeFileAttributeRefId">
                         <xs:annotation><xs:documentation>References to eg BioProject or BioSample</xs:documentation></xs:annotation>
                       </xs:element>
@@ -117,7 +122,7 @@
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Data" minOccurs="1" maxOccurs="unbounded">
+                    <xs:element name="Data" minOccurs="1" maxOccurs="1">
                       <xs:complexType>
                         <xs:complexContent>
                           <xs:extension base="typeInlineData">
@@ -198,7 +203,9 @@
                       </xs:element>
                       <xs:element name="AddComment" type="xs:string"/>
                     </xs:choice>
-
+                    <xs:element name="Identifier" type="com:typeIdentifier" minOccurs="0" maxOccurs="1">
+                      <xs:annotation><xs:documentation>Submission/User/NCBI - defined id.</xs:documentation></xs:annotation>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -323,6 +330,7 @@
             <xs:enumeration value="genbank-srcmods-filtered-tbl"/>
             <xs:enumeration value="genbank-sequences-report-txt"/>
             <xs:enumeration value="genbank-sequences-report-tbl"/>
+            <xs:enumeration value="genbank-tools-versions-xml"/>
             <xs:enumeration value="methylation-data"/>
           </xs:restriction>
         </xs:simpleType>
@@ -560,7 +568,7 @@
   <!-- Data about sequences -->
   <xs:complexType name="typeSequenceData">
     <xs:sequence>
-      <xs:element name="Sequence">
+      <xs:element name="Sequence" minOccurs="0" maxOccurs="unbounded">
         <xs:complexType>
           <xs:sequence>
             <xs:element name="Attribute" type="typeFileAttribute" minOccurs="1" maxOccurs="unbounded"></xs:element>
