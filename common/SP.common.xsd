@@ -193,7 +193,7 @@
     <!-- Publication. Can be either structured or free form citations as well as link to the publication database. -->
     <xs:complexType name="typePublication">
         <xs:sequence>
-            <xs:element name="AuthorSet" type="com:typeAuthorSet" maxOccurs="1"> </xs:element>
+            <xs:element name="AuthorSet" type="com:typeAuthorSet" minOccurs="0" maxOccurs="1"> </xs:element>
             <xs:element name="Reference" type="xs:string" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>Free form citation.</xs:documentation>
@@ -203,7 +203,7 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="Title" type="xs:string"> </xs:element>
-                        <xs:element name="Journal">
+                        <xs:element name="Journal" minOccurs="0">
                             <xs:complexType>
                                 <xs:sequence>
                                     <xs:element name="JournalTitle" type="xs:string">
