@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema_version="2.0">
+  <Description>
+    <Submitter user_name="kclark">
+      <Contact email="kclark@ncbi.nlm.nih.gov">
+        <Name>
+          <First>Karen</First>
+          <Last>Clark</Last>
+        </Name>
+      </Contact>
+    </Submitter>
+    <Organization type="institute" role="owner">
+      <Name>NIH</Name>
+    </Organization>
+    <Hold release_date="2017-01-31"/>
+  </Description>
+  <Action>
+    <AddFiles target_db="WGS">
+      <File file_path="test.sqn">
+        <DataType>wgs-contigs-sqn</DataType>
+      </File>
+      <Meta content_type="XML">
+        <XmlContent>
+          <Genome>
+            <Description>
+              <GenomeAssemblyMetadataChoice>
+                <!--
+                  Since this is a SQN submission, the genome assembly metadata
+                  can be supplied in a structured comment in the SQN file,
+                  rather than in the submission XML.
+                -->                
+                <StructuredComment/>
+              </GenomeAssemblyMetadataChoice>
+              <GenomeRepresentation>Full</GenomeRepresentation>
+              <ExpectedFinalVersion>Yes</ExpectedFinalVersion>
+              <Notes>Curator notes</Notes>
+            </Description>
+            <!--
+              For SQN submissions, the Publication and SequenceAuthors must be
+              provided in the SQN file, and not in the submission XML.
+            -->
+          </Genome>
+        </XmlContent>
+      </Meta>
+      <AttributeRefId>
+        <RefId>
+          <PrimaryId db="BioProject">PRJNA211840</PrimaryId>
+        </RefId>
+      </AttributeRefId>      
+      <!--
+        You can submit a BioSample (or BioProject) at the same time as your
+        WGS data.  In that case, since you don't know the accession yet,
+        refer to it using a SPUID (which should be unique across all
+        submissions) or LocalId (which just needs to be unique within
+        this submission).  The contents of this <RefId> should be the same
+        as the contents of the <Identifier> in the <Action> where you
+        submit the BioSample.
+        
+        In this case, you need to put the database name ("BioSample" here)
+        in the name attribute of <AttributeRefId>:
+      -->
+      <AttributeRefId name="BioSample">
+        <RefId>
+          <SPUID spuid_namespace="NCBI">Oct15-15</SPUID>
+        </RefId>
+      </AttributeRefId>
+      <Identifier>
+        <LocalId>1</LocalId>
+      </Identifier>
+    </AddFiles>
+  </Action>
+  <Action>
+    <AddData target_db="BioSample">
+      <Data content_type="XML">
+        <XmlContent>
+          <BioSample schema_version="2.0">
+            <SampleId>
+              <SPUID spuid_namespace="NCBI">Oct15-15</SPUID>
+            </SampleId>
+            <Descriptor>
+              <Title>E.coli test submission</Title>
+              <ExternalLink label="Link label">
+                <URL>http://url.org/sample123</URL>
+              </ExternalLink>              
+            </Descriptor>
+            <Organism>
+              <OrganismName>Escherichia coli</OrganismName>
+            </Organism>
+            <BioProject>
+              <PrimaryId db="BioProject">PRJNA211840</PrimaryId>
+            </BioProject>
+            <Package>Microbe.1.0</Package>
+            <Attributes>
+              <Attribute attribute_name="strain">ABC1234</Attribute>
+              <Attribute attribute_name="collection_date">2015-06-01</Attribute>
+              <Attribute attribute_name="geo_loc_name">USA:Maryland</Attribute>
+              <Attribute attribute_name="host">Mus musculus</Attribute>
+              <Attribute attribute_name="isolation_source">Mus musculus gut</Attribute>
+              <Attribute attribute_name="sample_type">cell culture</Attribute>
+            </Attributes>
+          </BioSample>
+        </XmlContent>
+      </Data>
+      <Identifier>
+        <SPUID spuid_namespace="NCBI">Oct15-15</SPUID>
+      </Identifier>
+    </AddData>
+  </Action>
+</Submission>

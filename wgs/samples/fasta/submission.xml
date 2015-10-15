@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema_version="2.0">
+  <Description>
+    <Submitter user_name="kclark">
+      <Contact email="kclark@ncbi.nlm.nih.gov">
+        <Name>
+          <First>Karen</First>
+          <Last>Clark</Last>
+        </Name>
+      </Contact>
+    </Submitter>
+    <Organization type="institute" role="owner">
+      <Name>NIH</Name>
+    </Organization>
+    <Hold release_date="2017-01-31"/>
+  </Description>
+  <Action>
+    <AddFiles target_db="WGS">
+      <File file_path="test.fsa">
+        <DataType>wgs-contigs-fasta</DataType>
+      </File>
+      <Meta content_type="XML">
+        <XmlContent>
+          <Genome>
+            <Description>
+              <GenomeAssemblyMetadataChoice>
+                <GenomeAssemblyMetadata>
+                  <SequencingTechnologies coverage="8.0">
+                    <Technology>ABI3730</Technology>
+                  </SequencingTechnologies>
+                  <Assembly>
+                    <Method version="3">Celera Assembler</Method>
+                  </Assembly>
+                  <AssemblyName>Assembly 123</AssemblyName>
+                </GenomeAssemblyMetadata>
+              </GenomeAssemblyMetadataChoice>
+              <GenomeRepresentation>Full</GenomeRepresentation>
+              <SequenceAuthors>
+                <Author>
+                  <Name>
+                    <First>Karen</First>
+                    <Last>Smith</Last>
+                  </Name>
+                </Author>
+                <Author>
+                  <Name>
+                    <First>Thomas</First>
+                    <Last>Jones</Last>
+                    <Middle>U</Middle>
+                  </Name>
+                </Author>
+              </SequenceAuthors>
+              <Publication status="ePublished" id="23193287">
+                <!--
+                  For in-press or published papers, you can enter a PubMed ID
+                  in the id attribute of the Publicationm, and set the DbType
+                  to ePubmed.  In that case, leave out the other publication
+                  information (AuthorSet, Reference, StructuredCitation) - the
+                  information will be pulled from the PubMed database.
+                -->
+                <DbType>ePubmed</DbType>
+              </Publication>
+              <ExpectedFinalVersion>Yes</ExpectedFinalVersion>
+              <!-- Request annotation with PGAP: -->
+              <AnnotateWithPGAP>Yes</AnnotateWithPGAP>
+              <Notes>Curator notes</Notes>
+            </Description>
+          </Genome>
+        </XmlContent>
+      </Meta>
+      <AttributeRefId>
+        <RefId>
+          <PrimaryId db="BioProject">PRJNA211840</PrimaryId>
+        </RefId>
+      </AttributeRefId>      
+      <AttributeRefId>
+        <RefId>
+          <PrimaryId db="BioSample">SAMN02088416</PrimaryId>
+        </RefId>
+      </AttributeRefId>
+      <Identifier>
+        <SPUID spuid_namespace="NCBI">6789</SPUID>
+      </Identifier>
+    </AddFiles>
+  </Action>
+</Submission>

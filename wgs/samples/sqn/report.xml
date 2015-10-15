@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SubmissionStatus status="processed-ok" submission_id="SUB190855">
+  <Action action_id="SUB190855-1" target_db="WGS" notify_submitter="false" status="processed-ok">
+    <Response status="processed-ok">
+      <Message severity="info"/>
+      <File file_id="vrpOiQd2/again.AGTD.AsmStrCmt.sqn" file_path="again.AGTD.AsmStrCmt.sqn"/>
+      <Object target_db="nuccore" object_id="JXXK00000000" accession="JXXK00000000" url="http://www.ncbi.nlm.nih.gov/nuccore/JXXK00000000" status="new"/>
+    </Response>
+  </Action>
+  <Action status="processed-ok" action_id="SUB190855-oct06-123" target_db="BioSample" notify_submitter="true">
+    <Response status="processed-ok">
+      <Message severity="info">Successfully loaded</Message>
+      <Object target_db="BioSample" object_id="2094787" status="new" last_update="2015-10-08T15:30:11.000" accession="SAMN02094787" spuid="Oct15-15" spuid_namespace="NCBI">
+        <Meta>
+          <Organism taxid="562">Escherichia coli</Organism>
+          <Strain>ABC1234</Strain>
+          <BioProjectID>211840</BioProjectID>
+          <BioProject>PRJNA211840</BioProject>
+          <Status>hup</Status>
+        </Meta>
+      </Object>
+    </Response>
+  </Action>
+</SubmissionStatus>
