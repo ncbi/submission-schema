@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema_version="2.0">
   <Description>
-    <Submitter user_name="kclark">
-      <Contact email="kclark@ncbi.nlm.nih.gov">
+    <Submitter user_name="ktsmith">
+      <Contact email="ktsmith@here.gov">
         <Name>
           <First>Karen</First>
-          <Last>Clark</Last>
+          <Last>Smith</Last>
         </Name>
       </Contact>
     </Submitter>

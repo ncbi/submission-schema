@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schema_version="2.0">
+<Submission schema_version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Description>
     <Submitter user_name="ktsmith">
       <Contact email="ktsmith@here.gov">
@@ -12,18 +12,27 @@
     <Organization type="institute" role="owner">
       <Name>NIH</Name>
     </Organization>
+    <!-- Hold: Ask NCBI not to release the submission until Jan 31, 2017: -->
     <Hold release_date="2017-01-31"/>
   </Description>
   <Action>
     <AddFiles target_db="WGS">
-      <File file_path="test.fsa">
+      <!--
+        Since this File is listed with a file_id, it refers to a file that's already in FileTrack.
+      -->
+      <File file_id="fX41qstt/test.fsa">
         <DataType>wgs-contigs-fasta</DataType>
       </File>
       <Meta content_type="XML">
         <XmlContent>
           <Genome>
+            <!-- The Genome is described by genome.xsd. -->
             <Description>
               <GenomeAssemblyMetadataChoice>
+                <!--
+                  Since this is a FASTA submission, the Genome Assembly
+                  Metadata must be provided in this file.
+                -->
                 <GenomeAssemblyMetadata>
                   <SequencingTechnologies coverage="8.0">
                     <Technology>ABI3730</Technology>
@@ -50,19 +59,32 @@
                   </Name>
                 </Author>
               </SequenceAuthors>
-              <Publication status="ePublished" id="23193287">
+              <Publication status="eUnpublished">
+                <AuthorSet>
+                  <Author>
+                    <Name>
+                      <First>Brenda</First>
+                      <Last>Price</Last>
+                      <Middle>A</Middle>
+                    </Name>
+                  </Author>
+                  <Author>
+                    <Name>
+                      <First>Olex</First>
+                      <Last>Smith</Last>
+                      <Middle>U</Middle>
+                    </Name>
+                  </Author>
+                </AuthorSet>
                 <!--
-                  For in-press or published papers, you can enter a PubMed ID
-                  in the id attribute of the Publicationm, and set the DbType
-                  to ePubmed.  In that case, leave out the other publication
-                  information (AuthorSet, Reference, StructuredCitation) - the
-                  information will be pulled from the PubMed database.
+                  For unpublished articles, the title goes in the
+                  Reference tag.
                 -->
-                <DbType>ePubmed</DbType>
+                <Reference>My Genome Sequencing Paper</Reference>
+                <!-- For unpublished articles, DbType must be eNotAvailable. -->
+                <DbType>eNotAvailable</DbType>
               </Publication>
               <ExpectedFinalVersion>Yes</ExpectedFinalVersion>
-              <!-- Request annotation with PGAP: -->
-              <AnnotateWithPGAP>Yes</AnnotateWithPGAP>
               <Notes>Curator notes</Notes>
             </Description>
           </Genome>
@@ -72,14 +94,14 @@
         <RefId>
           <PrimaryId db="BioProject">PRJNA211840</PrimaryId>
         </RefId>
-      </AttributeRefId>      
+      </AttributeRefId>
       <AttributeRefId>
         <RefId>
           <PrimaryId db="BioSample">SAMN02088416</PrimaryId>
         </RefId>
       </AttributeRefId>
       <Identifier>
-        <SPUID spuid_namespace="NCBI">6789</SPUID>
+        <SPUID spuid_namespace="NCBI">54321</SPUID>
       </Identifier>
     </AddFiles>
   </Action>
