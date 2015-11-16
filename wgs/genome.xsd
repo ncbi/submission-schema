@@ -233,10 +233,12 @@
             <xs:enumeration value="Illumina GAII"/>
             <xs:enumeration value="Illumina GAIIx"/>
             <xs:enumeration value="Illumina HiSeq"/>
-            <xs:enumeration value="SOLiD"/>
             <xs:enumeration value="Illumina MiSeq"/>
+            <xs:enumeration value="Illumina NextSeq"/>
+            <xs:enumeration value="Illumina NextSeq 500"/>
             <xs:enumeration value="PacBio"/>
             <xs:enumeration value="IonTorrent"/>
+            <xs:enumeration value="SOLiD"/>
             <xs:enumeration value="Helicos"/>
             <xs:enumeration value="Complete Genomics"/>
             <xs:enumeration value="Other"/>
