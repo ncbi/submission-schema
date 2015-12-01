@@ -250,6 +250,7 @@
             <xs:enumeration value="Newbler"/>
             <xs:enumeration value="Celera Assembler"/>
             <xs:enumeration value="SOAPdenovo"/>
+            <xs:enumeration value="SPAdes"/>            
             <xs:enumeration value="Velvet"/>
             <xs:enumeration value="AllPaths"/>
             <xs:enumeration value="GS De Novo Assembler"/>
