@@ -41,9 +41,8 @@
       <xs:element name="Package" type="xs:string" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>
-              Name of attribute package used to validate the sample. See
-              http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/biosample/docs/biosample_package_names.txt?view=log
-              for the full list of available packages.
+              Name of attribute package used to validate the sample, for example: MIGS.ba.air.4.0. 
+              See https://www.ncbi.nlm.nih.gov/biosample/docs/packages/ for the full list of available packages.
            </xs:documentation>
         </xs:annotation>
       </xs:element>
