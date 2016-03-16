@@ -260,6 +260,7 @@
             <xs:enumeration value="CLC NGS Cell"/>
             <xs:enumeration value="Arachne"/>
             <xs:enumeration value="JAZZ"/>
+            <xs:enumeration value="MaSuRCA"/>
             <xs:enumeration value="Other"/>
         </xs:restriction>
     </xs:simpleType>
