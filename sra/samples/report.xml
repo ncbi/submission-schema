@@ -1,25 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<SubmissionStatus status="processed-ok" submission_id="SUB176281">
-    <Action action_id="SUB176328-CIES-13-0265:2" target_db="BioSample" status="processed-ok">
-        <Response status="processed-ok" error_source="data">
-            <Message severity="info">Successfully loaded</Message>
-            <Object target_db="BioSample" object_id="2048140" status="new" last_update="2014-05-29T12:03:40.937" accession="SAMN02048140" spuid="CIES-13-0265:2" spuid_namespace="CFSAN">
-                <Meta>
-                    <Organism taxid="59201">Salmonella enterica subsp. enterica</Organism>
-                    <Strain>CIES-13-0265</Strain>
-                    <Status>live</Status>
-                </Meta>
-            </Object>
-        </Response>
-    </Action>
-    <Action action_id="SUB176328-CFSAN006236_01:2" target_db="SRA" status="processed-ok">
+<SubmissionStatus status="processed-ok" submission_id="SUB12345">
+    <Action action_id="SUB716890-folder1" target_db="SRA" status="processed-ok">
         <Response status="processed-ok">
-            <Object target_db="SRA" object_id="EXPERIMENT:1371" spuid_namespace="CFSAN" spuid="CFSAN006236_01:2" accession="SRX000278" status="new"/>
-        </Response>
-    </Action>
-    <Action action_id="SUB176281-CFSAN006236_01:3" target_db="SRA" status="processed-ok">
-        <Response status="processed-ok">
-            <Object target_db="SRA" object_id="RUN:1743" spuid_namespace="CFSAN" spuid="CFSAN006236_01:3" accession="SRR000210" status="new"/>
+            <Object target_db="SRA" object_id="RUN:345678" spuid_namespace="CFSAN" spuid="CFSAN006236_01:3" accession="SRR56789" status="new"/>
         </Response>
     </Action>
 </SubmissionStatus>
