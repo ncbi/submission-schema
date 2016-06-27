@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
-  <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co" namespace="SP.common"/>
+  <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
 
   <!-- Main Submission XML -->
   <xs:element name="Submission">
@@ -36,6 +36,22 @@
                 </xs:annotation>
                 <xs:complexType>
                   <xs:attribute name="release_date" type="xs:date" use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="SubmissionSoftware" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                  Name of the third-party or in-house software, used by submitter to prepare this submission 
+                </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="version" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>
+                        Version of the submission software
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -211,6 +227,13 @@
               </xs:element>
             </xs:choice>
             <xs:attribute name="action_id" type="xs:token"/>
+            <xs:attribute name="submitter_tracking_id">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:maxLength value="255"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
           </xs:complexType>
         </xs:element>
 
@@ -299,7 +322,15 @@
             <xs:enumeration value="sra-sample-xml-v2"/>
             <xs:enumeration value="sra-run-xml-v2"/>
             <xs:enumeration value="sra-analysis-xml-v2"/>
+            <xs:enumeration value="sra-run-454_native"/>
+            <xs:enumeration value="sra-run-bam"/>
+            <xs:enumeration value="sra-run-CompleteGenomics_native"/>
             <xs:enumeration value="sra-run-fastq"/>
+            <xs:enumeration value="sra-run-Helicos_native"/>
+            <xs:enumeration value="sra-run-PacBio_HDF5"/>
+            <xs:enumeration value="sra-run-sff"/>
+            <xs:enumeration value="sra-run-SOLiD_native"/>
+            <xs:enumeration value="sra-run-srf"/>
             <xs:enumeration value="project-core-xml-v1"/>
             <xs:enumeration value="wgs-contigs-sqn"/>
             <xs:enumeration value="wgs-unplaced-scaffolds-agp"/>
@@ -332,6 +363,20 @@
             <xs:enumeration value="genbank-sequences-report-tbl"/>
             <xs:enumeration value="genbank-tools-versions-xml"/>
             <xs:enumeration value="methylation-data"/>
+            <xs:enumeration value="sequences-fasta"/>
+            <xs:enumeration value="bionano-cmap"/>
+            <xs:enumeration value="bionano-coord"/>
+            <xs:enumeration value="bionano-xmap"/>
+            <xs:enumeration value="bionano-smap"/>
+            <xs:enumeration value="bionano-bnx"/>
+            <xs:enumeration value="sequin"/>
+            <xs:enumeration value="antibiogram"/>
+            <xs:enumeration value="modifications.csv"/>
+            <xs:enumeration value="modifications.gff"/>
+            <xs:enumeration value="motifs.gff"/>
+            <xs:enumeration value="motif_summary.csv"/>
+            <xs:enumeration value="biosample-tbl-v2.0"/>
+            <xs:enumeration value="antibiogram-tbl-v1.0"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -575,9 +620,10 @@
           </xs:sequence>
           <xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
           <xs:attribute name="type" type="xs:string" use="required"></xs:attribute> <!-- TODO - restrict this by reasonable type set -->
+          <xs:attribute name="only_one" type="xs:string" use="optional"></xs:attribute>
         </xs:complexType>
       </xs:element>
-      <xs:element name="AuthorSet" type="com:typeAuthorSet"></xs:element>
+      <xs:element name="AuthorSet" type="com:typeAuthorSet" minOccurs="0" maxOccurs="1"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -623,7 +669,21 @@
           <xs:documentation>WGS GenBank submission</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="GTR"/>
+      <xs:enumeration value="variation">
+        <xs:annotation>
+          <xs:documentation>Variation Organization submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="variation_submission">
+        <xs:annotation>
+          <xs:documentation>Variation File submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GTR">
+        <xs:annotation>
+          <xs:documentation>GTR Lab submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="TSA">
         <xs:annotation>
           <xs:documentation>TSA GenBank submission</xs:documentation>
@@ -645,6 +705,7 @@
       <xs:enumeration value="GenBank">
         <xs:annotation><xs:documentation>GenBank Web submissions processor</xs:documentation></xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="SupFiles"/>
     </xs:restriction>
   </xs:simpleType>
 
