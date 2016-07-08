@@ -83,6 +83,12 @@
         <xs:attribute name="override_submitter" type="xs:boolean" use="optional">
             <xs:annotation><xs:documentation>Override whatever changes submitter did already. Optional flag from the target db to override possible changes, done by the submitter (true or false)</xs:documentation></xs:annotation>
         </xs:attribute>        
+        <xs:attribute name="submitter_tracking_id" use="optional">
+            <xs:annotation><xs:documentation>Action ID provided by submitter. Used for tracking.</xs:documentation></xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"><xs:maxLength value="255"/></xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
     </xs:complexType>
 
     
