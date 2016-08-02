@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns:com="SP.common" version="2.0">
-    <xs:import
-        schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co"
-        namespace="SP.common"/>
+    <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
     <xs:element name="Genome">
         <xs:complexType>
             <xs:sequence>
@@ -89,10 +87,19 @@
                                 </xs:complexType>
                             </xs:element>
                             
-                            <xs:element name="GapInfo" type="typeGapInfo" minOccurs="0">
+                            <xs:element name="CompleteGenome" type="typeYesNo"  minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        If Yes, each chromosome is in a single sequence and there are no extra 
+                                        sequences. There can still be gaps within the sequences. Internal 
+                                        sequences must be arranged in the correct order and orientation.
+                                        Plasmids and organelles can still be in multiple pieces.                                        
+                                    </xs:documentation>
+                                </xs:annotation>
                             </xs:element>
                             
-
+                            <xs:element name="GapInfo" type="typeGapInfo" minOccurs="0"></xs:element>
+                            
                             <xs:element name="GenomeRepresentation" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation> GenomeRepresentation indicates whether the
@@ -167,6 +174,85 @@
                     </xs:complexType>
                 </xs:element>
 
+                <xs:element name="Chromosomes" minOccurs="0">
+                    <xs:complexType>
+                        <xs:annotation>
+                            <xs:documentation>List of chromosomes, organelles and
+                                plasmids that are present in this assembly.</xs:documentation>
+                        </xs:annotation>
+                        <xs:sequence>
+                            <xs:element name="Chromosome" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:annotation>
+                                        <xs:documentation> The only required attribute is  type. Chromosome_name is required if
+                                            there are more than one chromosome of the same type, for
+                                            instance multiple eukaryotic chromosomes or multiple
+                                            plastids. Provide the plasmid name, if known. Use 'unnamed' or 'unnamed 1' and 'unnamed 2' for plasmids whose names are not yet known. In all other cases default names will be
+                                            assigned: chromosome: ANONYMOUS; plasmid: unnamed;
+                                            mitochondrion: MT; chloroplast, apicoplast, leucoplast,
+                                            plastid, proplastid: Pltd;
+                                            hydrogenosome: Hydrogenosome; kinetoplast: Kinetoplast. </xs:documentation>
+                                    </xs:annotation>
+                                    <xs:sequence>
+                                        <xs:annotation>
+                                            <xs:documentation> If chromosome is assembled into
+                                                essentially the complete sequence, its ID is referenced in
+                                                TheChromosomeSequence element. Note that gaps may be present. 
+                                                UnlocalizedChromosomeSequence contains list of
+                                                 IDs that are associated
+                                                with chromosome, but which location on chromosome is
+                                                not known. Both TheChromsomeSequence and
+                                                UnlocalizedChromosomeSequence elements can be
+                                                present in the same time. If an AGP file is included, then the ID is an
+                                                AGP object ID (column 1 in AGP file). Otherwise, the ID is a contig ID.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:element name="TheChromosomeSequence"
+                                            minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute name="circular" type="typeYesNo" use="required">
+                                                            <xs:annotation><xs:documentation>Provide the topology of the chromosome, circular (=yes) or linear (=no)</xs:documentation>
+                                                            </xs:annotation>
+                                                        </xs:attribute>
+                                                        <xs:attribute name="ends_abut" type="typeYesNo" use="optional">
+                                                            <xs:annotation><xs:documentation>Yes, if there is no gap between ends of a circular chromosome</xs:documentation>
+                                                            </xs:annotation>
+                                                        </xs:attribute>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="UnlocalizedChromosomeSequence"
+                                            type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="type" type="typeChromosomeType"
+                                        use="required"/>
+                                    <xs:attribute name="chromosome_name" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Unplaced" minOccurs="0">
+                    <xs:complexType>
+                        <xs:annotation>
+                            <xs:documentation> Unplaced element lists contigs and/or AGP objects IDs
+                                for which association with chromosomes is not known. If Unplaced
+                                element is missing, all AGP objects (or contigs, when no AGP files are submitted) not listed in
+                                Chromosomes element are assumed to be Unplaced. If Unplaced element
+                                is present, then each top level AGP object (or contig, when no AGP files are submitted) has to be mentioned
+                                either in Chromosomes or Unplaced element. Contig or AGP object is a
+                                'top level' when it is not used to construct any other AGP objects.
+                            </xs:documentation>
+                        </xs:annotation>
+                        <xs:sequence>
+                            <xs:element name="UnplacedSequence" type="xs:string"
+                                maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -250,7 +336,7 @@
             <xs:enumeration value="Newbler"/>
             <xs:enumeration value="Celera Assembler"/>
             <xs:enumeration value="SOAPdenovo"/>
-            <xs:enumeration value="SPAdes"/>            
+            <xs:enumeration value="SPAdes"/>
             <xs:enumeration value="Velvet"/>
             <xs:enumeration value="AllPaths"/>
             <xs:enumeration value="GS De Novo Assembler"/>
