@@ -1,0 +1,113 @@
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/submission.xsd?view=co">
+  <Description>
+    <Submitter>
+      <Contact email="bbbbbb.aaaaa@abc.org">
+        <Name>
+          <First>Robert</First>
+          <Last>Smith</Last>
+        </Name>
+      </Contact>
+    </Submitter>
+    <Organization role="owner" type="institute">
+      <Name>MyInstitute</Name>
+    </Organization>
+  </Description>
+  <Action>
+    <AddFiles target_db="WGS">
+      <File file_path="test_gap.fsa">
+        <DataType>wgs-contigs-fasta</DataType>
+      </File>
+      <Meta content_type="XML">
+        <XmlContent>
+          <Genome>
+            <Description>
+              <GenomeAssemblyMetadataChoice>
+                <GenomeAssemblyMetadata>
+                  <SequencingTechnologies coverage="126.49">
+                    <Technology>Illumina NextSeq 500</Technology>
+                  </SequencingTechnologies>
+                  <Assembly>
+                    <Method version="3.1.1">SPAdes</Method>
+                  </Assembly>
+                </GenomeAssemblyMetadata>
+              </GenomeAssemblyMetadataChoice>
+	      <GapInfo min_gap_size="10" unknown_gap_size="0" linkage_evidence="paired-ends"/>
+              <GenomeRepresentation>Full</GenomeRepresentation>
+              <SequenceAuthors>
+                <Author>
+                  <Name>
+                    <First>Mark</First>
+                    <Last>Salinger</Last>
+                  </Name>
+                </Author>
+                <Author>
+                  <Name>
+                    <First>Merle</First>
+                    <Last>Haggard</Last>
+                  </Name>
+                </Author>
+                <Author>
+                  <Name>
+                    <First>Hermione</First>
+                    <Last>Granger</Last>
+                  </Name>
+                </Author>
+                <Author>
+                  <Name>
+                    <First>Michael</First>
+                    <Last>Johnson</Last>
+                  </Name>
+                </Author>
+              </SequenceAuthors>
+              <Publication status="eUnpublished">
+                <AuthorSet>
+                  <Author>
+                    <Name>
+                      <First>Mark</First>
+                      <Last>Salinger</Last>
+                    </Name>
+                  </Author>
+                  <Author>
+                    <Name>
+                      <First>Merle</First>
+                      <Last>Haggard</Last>
+                    </Name>
+                  </Author>
+                  <Author>
+                    <Name>
+                      <First>Hermione</First>
+                      <Last>Granger</Last>
+                    </Name>
+                  </Author>
+                  <Author>
+                    <Name>
+                      <First>Michael</First>
+                      <Last>Johnson</Last>
+                    </Name>
+                  </Author>
+                </AuthorSet>
+                <Reference>Genome sequence of this interesting organism</Reference>
+                <DbType>eNotAvailable</DbType>
+              </Publication>
+              <ExpectedFinalVersion>Yes</ExpectedFinalVersion>
+              <AnnotateWithPGAP>Yes</AnnotateWithPGAP>
+            </Description>
+          </Genome>
+        </XmlContent>
+      </Meta>
+      <AttributeRefId>
+        <RefId>
+          <PrimaryId db="BioProject">PRJNA211840</PrimaryId>
+        </RefId>
+      </AttributeRefId>
+      <AttributeRefId>
+        <RefId>
+          <PrimaryId db="BioSample">SAMN02088416</PrimaryId>
+        </RefId>
+      </AttributeRefId>
+      <Identifier>
+        <SPUID spuid_namespace="MyInstitute">genome123</SPUID>
+      </Identifier>
+    </AddFiles>
+  </Action>
+</Submission>
