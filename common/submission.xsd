@@ -345,6 +345,7 @@
             <xs:enumeration value="wgs-assembly-sqn"/>
             <xs:enumeration value="wgs-assembly-fasta"/>
             <xs:enumeration value="wgs-contigs-fasta"/>
+            <xs:enumeration value="wgs-agp"/>
             <xs:enumeration value="ena-wgs-flatfile"/>
             <xs:enumeration value="ddbj-wgs-flatfile"/>
             <xs:enumeration value="wgs-flatfile-preprocess-report"/>
@@ -354,6 +355,8 @@
             <xs:enumeration value="complete-genomes-annotate-fasta"/>
             <xs:enumeration value="complete-genomes-annotate-template"/>
             <xs:enumeration value="complete-genomes-replicon"/>
+            <xs:enumeration value="genbank-sqn"/>
+            <xs:enumeration value="genbank-barcode-tar"/>
             <xs:enumeration value="genbank-sequences-fasta"/>
             <xs:enumeration value="genbank-srcmods-tbl"/>
             <xs:enumeration value="genbank-sequences-filtered-fasta"/>
@@ -362,6 +365,8 @@
             <xs:enumeration value="genbank-sequences-report-txt"/>
             <xs:enumeration value="genbank-sequences-report-tbl"/>
             <xs:enumeration value="genbank-tools-versions-xml"/>
+            <xs:enumeration value="genbank-features-table"/>
+            <xs:enumeration value="genbank-features-filtered-table"/>
             <xs:enumeration value="methylation-data"/>
             <xs:enumeration value="sequences-fasta"/>
             <xs:enumeration value="bionano-cmap"/>
@@ -659,6 +664,11 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="BioProject"/>
       <xs:enumeration value="BioSample"/>
+      <xs:enumeration value="clinvar">
+        <xs:annotation>
+          <xs:documentation>ClinVar Submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="dbGaP">
         <xs:annotation>
           <xs:documentation>dbGaP phenotypic data</xs:documentation>
@@ -706,6 +716,21 @@
         <xs:annotation><xs:documentation>GenBank Web submissions processor</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="SupFiles"/>
+      <xs:enumeration value="EST">
+        <xs:annotation>
+          <xs:documentation>EST GenBank submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GSS">
+        <xs:annotation>
+          <xs:documentation>GSS GenBank submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TPA">
+        <xs:annotation>
+          <xs:documentation>TPA GenBank submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
