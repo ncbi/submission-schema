@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     xmlns:com="SP.common" version="2.0">
-    <xs:import schemaLocation="SP.common.xsd" namespace="SP.common"/>
+    <xs:import
+        schemaLocation="SP.common.xsd"
+        namespace="SP.common"/>
     <xs:element name="Genome">
         <xs:complexType>
             <xs:sequence>
@@ -69,6 +71,9 @@
                                                                 </xs:annotation>
                                                             </xs:attribute>
                                                         </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="PolishingMethod" type="xs:string" minOccurs="0" maxOccurs="1">
+                                                        <xs:annotation><xs:documentation>The Polishing Method is the error correction program that was run on the reads. Examples include Pilon, Quiver and Falcon.</xs:documentation></xs:annotation>
                                                     </xs:element>
                                                     <xs:element name="AssemblyName" type="typeNonEmptyString" maxOccurs="1" minOccurs="0">
                                                         <xs:annotation><xs:documentation>Provide a short acronym for the assembly name, eg LoxAfr3.0 for the 3rd version of the Loxodonta africana assembly</xs:documentation>
@@ -174,7 +179,7 @@
                     </xs:complexType>
                 </xs:element>
 
-                <xs:element name="Chromosomes" minOccurs="0">
+                <xs:element name="Chromosomes" minOccurs="0" maxOccurs="1">
                     <xs:complexType>
                         <xs:annotation>
                             <xs:documentation>List of chromosomes, organelles and
@@ -208,7 +213,7 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:element name="TheChromosomeSequence"
-                                            minOccurs="0" maxOccurs="1">
+                                            minOccurs="0" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:simpleContent>
                                                     <xs:extension base="xs:string">
@@ -250,6 +255,26 @@
                         <xs:sequence>
                             <xs:element name="UnplacedSequence" type="xs:string"
                                 maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="PolyploidAssemblyDefinition" minOccurs="0">
+                    <xs:complexType>
+                        <xs:annotation>
+                            <xs:documentation>
+                                Polyploid assembly structure definition. Provide files for each homologous assembly unit.
+                            </xs:documentation>
+                        </xs:annotation>
+                        <xs:sequence>
+                            <xs:element name="AssemblyUnit" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="File" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>  
+                                    <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+                                    <xs:attribute name="primary" type="typeYesNo" use="required"></xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -363,40 +388,7 @@
             <xs:enumeration value="Proplastid"/>
             <xs:enumeration value="Hydrogenosome"/>
             <xs:enumeration value="Kinetoplast"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="typeRepliconMolType">
-        <xs:restriction base="xs:token">
-            <xs:enumeration value="eChromosome"/>
-            <xs:enumeration value="ePlasmid"/>
-            <xs:enumeration value="eLinkageGroup"/>
-            <xs:enumeration value="eSegment"/>
-            <xs:enumeration value="eExtrachrom"/>
-            <xs:enumeration value="eOther"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="typeRepliconLocation">
-        <xs:restriction base="xs:token">
-            <xs:enumeration value="eNuclearProkaryote"/>
-            <xs:enumeration value="eMacronuclear"/>
-            <xs:enumeration value="eNucleomorph"/>
-            <xs:enumeration value="eMitochondrion"/>
-            <xs:enumeration value="eKinetoplast"/>
-            <xs:enumeration value="eChloroplast"/>
-            <xs:enumeration value="eChromoplast"/>
-            <xs:enumeration value="ePlastid"/>
-            <xs:enumeration value="eVirionPhage"/>
-            <xs:enumeration value="eProviralProphage"/>
-            <xs:enumeration value="eViroid"/>
-            <xs:enumeration value="eCyanelle"/>
-            <xs:enumeration value="eApicoplast"/>
-            <xs:enumeration value="eLeucoplast"/>
-            <xs:enumeration value="eProplastid"/>
-            <xs:enumeration value="eHydrogenosome"/>
-            <xs:enumeration value="eChromatophore"/>
-            <xs:enumeration value="eOther"/>
+            <xs:enumeration value="LinkageGroup"/>            
         </xs:restriction>
     </xs:simpleType>
 

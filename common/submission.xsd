@@ -346,6 +346,7 @@
             <xs:enumeration value="wgs-assembly-fasta"/>
             <xs:enumeration value="wgs-contigs-fasta"/>
             <xs:enumeration value="wgs-agp"/>
+            <xs:enumeration value="wgs-placement"/>
             <xs:enumeration value="ena-wgs-flatfile"/>
             <xs:enumeration value="ddbj-wgs-flatfile"/>
             <xs:enumeration value="wgs-flatfile-preprocess-report"/>
@@ -356,6 +357,7 @@
             <xs:enumeration value="complete-genomes-annotate-template"/>
             <xs:enumeration value="complete-genomes-replicon"/>
             <xs:enumeration value="genbank-sqn"/>
+            <xs:enumeration value="genbank-submission-package"/>
             <xs:enumeration value="genbank-barcode-tar"/>
             <xs:enumeration value="genbank-sequences-fasta"/>
             <xs:enumeration value="genbank-srcmods-tbl"/>

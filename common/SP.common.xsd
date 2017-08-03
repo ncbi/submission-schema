@@ -181,7 +181,7 @@
             <xs:element maxOccurs="unbounded" name="Author">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="Name" minOccurs="0" type="com:typeName"> </xs:element>
+                        <xs:element name="Name" minOccurs="0" type="com:typeAuthorName"> </xs:element>
                         <xs:element name="Consortium" type="xs:string" minOccurs="0"/>
                     </xs:sequence>
                 </xs:complexType>
@@ -344,6 +344,20 @@
             <xs:element name="Suffix" minOccurs="0" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
+
+    <!-- Author name of a person, both first and last names are required. -->
+    <xs:complexType name="typeAuthorName">
+        <xs:sequence>
+            <xs:element name="First" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Last" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Middle" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Full middle name or initials </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Suffix" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>    
 
     <!-- Contact info - an address with email -->
     <xs:complexType name="typeContactInfo">
