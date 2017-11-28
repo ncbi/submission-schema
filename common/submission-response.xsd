@@ -7,18 +7,31 @@
             <xs:documentation>Status of submission processing. Used in bulk data submission to report processing status back to submitter.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
-            <xs:choice minOccurs="0">
-                <xs:element name="Message" type="typeMessage" minOccurs="0" maxOccurs="1">
-                    <xs:annotation>
-                        <xs:documentation>Message to submitter at submission level.</xs:documentation>
-                    </xs:annotation>
+            <xs:sequence>
+                <xs:choice minOccurs="0">
+                    <xs:element name="Message" type="typeMessage" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Message to submitter at submission level.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Action" type="typeActionStatus" minOccurs="1" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Response for each submission action from the target archive.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:choice>
+                <xs:element name="Tracking" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="SubmissionLocation" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>Location of the UI-less submission on NCBI file system. Can be used to track the location of the submission XML and reports</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
                 </xs:element>
-                <xs:element name="Action" type="typeActionStatus" minOccurs="1" maxOccurs="unbounded">
-                    <xs:annotation>
-                        <xs:documentation>Response for each submission action from the target archive.</xs:documentation>
-                    </xs:annotation>
-                </xs:element>
-            </xs:choice>
+            </xs:sequence>
             <xs:attribute name="submission_id" use="optional">
                 <xs:annotation>
                     <xs:documentation>Id of the submission, assigned by Submission Portal, if submission compliant with the protocol.</xs:documentation>
@@ -32,6 +45,11 @@
                 </xs:annotation>
             </xs:attribute>
             <xs:attribute name="schema_version" type="xs:string" use="optional"/>
+            <xs:attribute name="last_update" type="xs:dateTime">
+            <xs:annotation>
+                <xs:documentation>Last update timestamp for the submission</xs:documentation>
+            </xs:annotation>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
 
@@ -234,6 +252,11 @@
                 <xs:attribute name="file_id" type="xs:string" use="optional">
                     <xs:annotation><xs:documentation>
                         FileTrack file id - unique and more preferred way to address the file. Works for files already in FileTrack. 
+                    </xs:documentation></xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="cloud_id" type="xs:string" use="optional">
+                    <xs:annotation><xs:documentation>
+                        FileTrack cloud file id - unique id for file in the cloud, which metadata is stored in FileTrack.
                     </xs:documentation></xs:annotation>
                 </xs:attribute>
                 <xs:attribute name="md5" type="xs:string" use="optional">
