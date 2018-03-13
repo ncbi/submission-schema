@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Submission>
+  <Description>
+    <Comment>MoV test submission</Comment>
+        <Organization type="center" role="owner">
+            <Name>Astringer to the King, MoV</Name>
+        </Organization>
+    </Description>
+    <Action>
+        <AddFiles target_db="GenBank">
+            <File file_path="online_UIless_example_files.zip">
+                <DataType>genbank-submission-package</DataType>
+            </File>
+            <Attribute name="wizard">BankIt_influenza_api</Attribute>
+            <Status>
+                <Release/>
+            </Status>
+            <Identifier>
+              <SPUID spuid_namespace="winter-grippe-surveillance">2018-07-20_09.102</SPUID>
+            </Identifier>
+        </AddFiles>
+    </Action>
+</Submission>
