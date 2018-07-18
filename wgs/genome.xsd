@@ -352,26 +352,38 @@
             <xs:enumeration value="SOLiD"/>
             <xs:enumeration value="Helicos"/>
             <xs:enumeration value="Complete Genomics"/>
+            <xs:enumeration value="Illumina MiniSeq"/>
+            <xs:enumeration value="Illumina NovaSeq"/>
+            <xs:enumeration value="Illumina iSeq"/>
+            <xs:enumeration value="PacBio RS"/>
+            <xs:enumeration value="PacBio RSII"/>
+            <xs:enumeration value="PacBio Sequel"/>
+            <xs:enumeration value="Oxford Nanopore"/>
+            <xs:enumeration value="Oxford Nanopore GridION"/>
+            <xs:enumeration value="Oxford Nanopore MiniION"/>
+            <xs:enumeration value="Oxford Nanopore PromethION"/>
             <xs:enumeration value="Other"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="typeAssemblyMethod">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Newbler"/>
+            <xs:enumeration value="ABySS"/>
+            <xs:enumeration value="AllPaths"/>
+            <xs:enumeration value="Arachne"/>
             <xs:enumeration value="Celera Assembler"/>
+            <xs:enumeration value="CLC NGS Cell"/>
+            <xs:enumeration value="FALCON"/>
+            <xs:enumeration value="FALCON-Unzip"/>
+            <xs:enumeration value="GS De Novo Assembler"/>
+            <xs:enumeration value="HGAP"/>
+            <xs:enumeration value="JAZZ"/>
+            <xs:enumeration value="MaSuRCA"/>
+            <xs:enumeration value="MIRA"/>
+            <xs:enumeration value="Newbler"/>
             <xs:enumeration value="SOAPdenovo"/>
             <xs:enumeration value="SPAdes"/>
             <xs:enumeration value="Velvet"/>
-            <xs:enumeration value="AllPaths"/>
-            <xs:enumeration value="GS De Novo Assembler"/>
-            <xs:enumeration value="MIRA"/>
-            <xs:enumeration value="phredPhrap"/>
-            <xs:enumeration value="ABySS"/>
-            <xs:enumeration value="CLC NGS Cell"/>
-            <xs:enumeration value="Arachne"/>
-            <xs:enumeration value="JAZZ"/>
-            <xs:enumeration value="MaSuRCA"/>
             <xs:enumeration value="Other"/>
         </xs:restriction>
     </xs:simpleType>

@@ -138,7 +138,7 @@
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="Data" minOccurs="1" maxOccurs="1">
+                    <xs:element name="Data" minOccurs="0" maxOccurs="1">
                       <xs:complexType>
                         <xs:complexContent>
                           <xs:extension base="typeInlineData">
@@ -361,6 +361,7 @@
             <xs:enumeration value="genbank-barcode-tar"/>
             <xs:enumeration value="genbank-sequences-fasta"/>
             <xs:enumeration value="genbank-srcmods-tbl"/>
+            <xs:enumeration value="genbank-ncbi-link-tbl"/>
             <xs:enumeration value="genbank-sequences-filtered-fasta"/>
             <xs:enumeration value="genbank-sequences-fastaval-xml"/>
             <xs:enumeration value="genbank-srcmods-filtered-tbl"/>
@@ -399,6 +400,13 @@
       <xs:annotation>
         <xs:documentation>
         FileTrack file id - unique and more preferred way to address the file. Works for files already in FileTrack. 
+      </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="cloud_id" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+        FileTrack cloud file id - unique id for file in the cloud, which metadata is stored in FileTrack.
       </xs:documentation>
       </xs:annotation>
     </xs:attribute>
