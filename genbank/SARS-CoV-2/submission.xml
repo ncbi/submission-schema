@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Submission>
+  <Description>
+    <Comment>SARS-CoV-2 test submission</Comment>
+    <Organization type="center" role="owner">
+      <Name>Test account for SARS-CoV-2 submissions</Name>
+    </Organization>
+    <Hold release_date="2024-05-25"/>
+  </Description>
+  <Action>
+    <AddFiles target_db="GenBank">
+      <File file_path="example.zip">
+        <DataType>genbank-submission-package</DataType>
+      </File>
+      <Attribute name="wizard">BankIt_SARSCoV2_api</Attribute>
+      <Identifier>
+        <SPUID spuid_namespace="ncbi-sarscov2-genbank">2020-03-04.sarscov2</SPUID>
+      </Identifier>
+    </AddFiles>
+  </Action>
+</Submission>
