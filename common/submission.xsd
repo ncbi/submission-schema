@@ -357,6 +357,7 @@
             <xs:enumeration value="sra-run-454_native"/>
             <xs:enumeration value="sra-run-bam"/>
             <xs:enumeration value="sra-run-CompleteGenomics_native"/>
+            <xs:enumeration value="sra-run-cram"/>
             <xs:enumeration value="sra-run-fastq"/>
             <xs:enumeration value="sra-run-Helicos_native"/>
             <xs:enumeration value="sra-run-PacBio_HDF5"/>
@@ -761,6 +762,11 @@
       <xs:enumeration value="GTR">
         <xs:annotation>
           <xs:documentation>GTR Lab submission</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GTRTesting">
+        <xs:annotation>
+          <xs:documentation>GTR Test Submission - End User Testing</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="TSA">
