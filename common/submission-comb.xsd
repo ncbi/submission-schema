@@ -62,8 +62,7 @@
         <xs:element name="Action" minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
-            Action is what to do - either process new submission (ProcessFile) or 
-            change status (ChangeStatus) of the existing one. 
+            Action is what to do - process new submission (ProcessFile)
           </xs:documentation>
           </xs:annotation>
 
@@ -187,45 +186,6 @@
                 </xs:complexType>
               </xs:element>
 
-              <xs:element name="ChangeStatus">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="Target" type="typeRefId">
-                      <xs:annotation>
-                        <xs:documentation>
-                        The ChangeStatus command is applied to Target archive specified by @db and id in the target archive specified by element body 
-                      </xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                    <xs:choice>
-                      <xs:element name="Release">
-                        <xs:annotation>
-                          <xs:documentation>Immediate release</xs:documentation>
-                        </xs:annotation>
-                      </xs:element>
-                      <xs:element name="SetReleaseDate">
-                        <xs:complexType>
-                          <xs:attribute name="release_date" type="xs:date"/>
-                        </xs:complexType>
-                      </xs:element>
-                      <xs:element name="Suppress" type="xs:string">
-                        <xs:annotation>
-                          <xs:documentation>Still have it, but not available in search</xs:documentation>
-                        </xs:annotation>
-                      </xs:element>
-                      <xs:element name="Withdraw" type="xs:string">
-                        <xs:annotation>
-                          <xs:documentation>Completely deleted.</xs:documentation>
-                        </xs:annotation>
-                      </xs:element>
-                      <xs:element name="AddComment" type="xs:string"/>
-                    </xs:choice>
-                    <xs:element name="Identifier" type="typeIdentifier" minOccurs="0" maxOccurs="1">
-                      <xs:annotation><xs:documentation>Submission/User/NCBI - defined id.</xs:documentation></xs:annotation>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
             </xs:choice>
             <xs:attribute name="action_id" type="xs:token"/>
             <xs:attribute name="submitter_tracking_id">
