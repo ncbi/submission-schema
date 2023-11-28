@@ -89,7 +89,7 @@
         </xs:attribute>
         <xs:attribute name="target_db" type="xs:string" use="optional">
             <xs:annotation>
-                <xs:documentation>Where this change request needs to go (or went to) for processing</xs:documentation>
+                <xs:documentation>Where this request needs to go (or went to) for processing</xs:documentation>
             </xs:annotation>
         </xs:attribute>
         <xs:attribute name="status" type="typeStatus" use="required">
