@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:com="SP.common" version="2.0">
-    <xs:import schemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/common/SP.common.xsd?view=co" namespace="SP.common"/>
+        <xs:import
+                schemaLocation="https://raw.githubusercontent.com/ncbi/submission-schema/refs/heads/master/common/SP.common.xsd" namespace="SP.common"/>
     
     <!-- BioProject object -->
     <xs:element name="Project" type="typeProject"> </xs:element>
