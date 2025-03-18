@@ -1,4 +1,5 @@
-<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ncbi.nlm.nih.gov/viewvc/v1/trunk/submit/public-docs/submission.xsd?view=co">
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://github.com/ncbi/submission-schema/blob/master/common/submission.xsd">
   <Description>
     <Submitter>
       <Contact email="bbbbbb.aaaaa@abc.org">
