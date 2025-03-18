@@ -1,5 +1,5 @@
 <Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="https://github.com/ncbi/submission-schema/blob/master/common/submission.xsd">
+  xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/ncbi/submission-schema/refs/heads/master/common/submission.xsd">
   <Description>
     <Submitter>
       <Contact email="bbbbbb.aaaaa@abc.org">

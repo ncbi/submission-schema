@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="https://github.com/ncbi/submission-schema/blob/master/common/submission.xsd" schema_version="2.0">
+  xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/ncbi/submission-schema/refs/heads/master/common/submission.xsd" schema_version="2.0">
     <Description>
         <Organization role="participant" type="institute">
             <Name>Genomics Institute</Name>
@@ -19,7 +19,7 @@
                 <XmlContent>
                     <Project
                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                      xsi:noNamespaceSchemaLocation="https://github.com/ncbi/submission-schema/blob/master/bioproject/bioproject.xsd" schema_version="2.0">
+                      xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/ncbi/submission-schema/refs/heads/master/bioproject/bioproject.xsd" schema_version="2.0">
                         <ProjectID/>                          
                         <Descriptor>
                             <Title>Candida albicans A123</Title>
